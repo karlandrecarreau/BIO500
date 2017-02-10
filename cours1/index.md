@@ -28,7 +28,7 @@ assets      :
 --- 
 
 <div style='text-align:center;'>
-<img src="assets/img/bacon_number.png" height="500px"></img>
+<img src="assets/img/bacon.png" height="500px"></img>
 </div>
 
 ---
