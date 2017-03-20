@@ -363,7 +363,7 @@
     <h2>Définition</h2>
 
 <blockquote>
-<p>Le SQL (Structured Query Language) est un langage permettant de communiquer avec une base de données.</p>
+<p>Le SQL (Structured Query Language) est le langage des SGBDs. Il permet de communiquer avec une base de données.</p>
 </blockquote>
 
   </article>
@@ -387,7 +387,8 @@
 <li>Supprimer la base de données (<code>DROP DATABASE</code>).</li>
 </ol>
 
-<p>Chacune de ces commandes est une instruction SQL envoyée au serveur pour manipuler et interroger la base de données.</p>
+<p>Chacune de ces commandes est une instruction SQL envoyée au serveur pour manipuler et interroger la base de données.
+C&#39;est le langage le plus explicite que je connaisse.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -398,12 +399,12 @@
     <h1>Le langage SQL</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Pour cette séance, nous nous attaderons seulement à:</h2>
+    <h2>Pour cette séance, nous nous attarderons seulement à:</h2>
 
 <ol>
 <li>Créer une base de données (<code>CREATE DATABASE</code>).</li>
 <li>Créer des tables et établir des relations (<code>CREATE TABLE</code>).</li>
-<li>Supprimer des tables (<code>DROP TABLE</code>).</li>
+<li>Supprimer ou modifier des tables (<code>DROP TABLE</code>, <code>ALTER TABLE</code>).</li>
 <li>Supprimer la base de données (<code>DROP DATABASE</code>).</li>
 </ol>
 
@@ -415,7 +416,127 @@
 <slide class="transition" id="slide-20" style="background:;">
   <!--  <a href="#slide-20"></a> -->
   <hgroup>
-    <h1>Exercice: Création d&#39;une base de données</h1>
+    <h1>Exercice: Conceptualisation d&#39;une base de données</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-21" style="background:;">
+  <!--  <a href="#slide-21"></a> -->
+  <hgroup>
+    <h1>Étape 1. Faire une liste des champs</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-22" style="background:;">
+  <!--  <a href="#slide-22"></a> -->
+  <hgroup>
+    <h1>Étape 2. Regrouper les champs dans des tables</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-23" style="background:;">
+  <!--  <a href="#slide-23"></a> -->
+  <hgroup>
+    <h1>Étape 3. Assigner un type de données</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-24" style="background:;">
+  <!--  <a href="#slide-24"></a> -->
+  <hgroup>
+    <h1>Étape 4. Établir les contraintes</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-25" style="background:;">
+  <!--  <a href="#slide-25"></a> -->
+  <hgroup>
+    <h1>Étape 5. Établir le type de jointure entre les tables</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
+  <hgroup>
+    <h1>Transcrire ces étapes en SQL</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
+  <hgroup>
+    <h1>Se connecter au SGBD (PostgreSQL) via R</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
+  <hgroup>
+    <h1>Se connecter au SGBD (PostgreSQL) via pgAdmin3</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
+  <hgroup>
+    <h1>Création de la base de données</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
+  <hgroup>
+    <h1>Création des tables et jointure</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
+  <hgroup>
+    <h1>Modifier une table existante</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
+  <hgroup>
+    <h1>Supprimer la base de données</h1>
   </hgroup>
   <article data-timings="">
     
@@ -542,8 +663,80 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Exercice: Création d&#39;une base de données'>
+        data-slide=20 title='Exercice: Conceptualisation d&#39;une base de données'>
          20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Étape 1. Faire une liste des champs'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Étape 2. Regrouper les champs dans des tables'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Étape 3. Assigner un type de données'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Étape 4. Établir les contraintes'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Étape 5. Établir le type de jointure entre les tables'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Transcrire ces étapes en SQL'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Se connecter au SGBD (PostgreSQL) via R'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Se connecter au SGBD (PostgreSQL) via pgAdmin3'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Création de la base de données'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Création des tables et jointure'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Modifier une table existante'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Supprimer la base de données'>
+         32
       </a>
     </li>
   </ul>
