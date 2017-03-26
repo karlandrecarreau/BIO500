@@ -54,8 +54,8 @@ assets      :
   <img src="assets/img/star_eg.png" width="50%"></img>
 </div>
 
-- Les BDs permettent de redimensionner ce problème (plusieurs tableaux de n-2 avec des relations).
-- Chaque table corresponds à une dimension. Les tables sont liées entre-elles par des relations. Cette structure est appelé [schéma en étoile](https://en.wikipedia.org/wiki/Star_schema)
+- Les BDs permettent de redimensionner ce problème (plusieurs tableaux de n-2 avec des relations) grâce au modèle d'entités-relations.
+- Chaque table corresponds à une dimension. Les tables sont liées entre-elles par des relations. Cette structure est appelé [schéma en étoile](https://en.wikipedia.org/wiki/Star_schema).
 
 ---
 
@@ -267,32 +267,104 @@ Soyez attentif car le travail de cette semaine consiste écrire un script qui pe
 
 --- .transition
 
-# Exercice: Conceptualisation d'une base de données
+# Conceptualisation d'une base de données en 5 étapes
 
 ---
 
-# Étape 1. Faire une liste des champs
+# Étape 1. Faire une liste des variables
+
+**Exercice (15-20 minutes):**
+
+1. Dresser la liste des informations collectées par les différents groupes.
+2. Regrouper les variables communes entre les groupes pour obtenir une ontologie conjointe.
+
+---
+
+# Étape 2. Regrouper les variables dans des tables
+
+**Exercice (15-20 minutes):** Regrouper les variables dans des tables.
+
+1. Déterminer les tables/entités:
+  - Qu'elles sont les unités d'échantillonnage? autrement dit, sur quelles entités portent nos mesures?
+2. Remplir les tables avec les champs de l'étape 1.
+
+
+À ce stade de la conceptualisation, une table est une entité possédant des attributs. Chaque attribut est une colonne.
+
+---
+
+# Étape 3. Établir le type d'associations entre les tables
+
+## Le concept de relations
+
+<div style='text-align:center;'>
+  <img src="assets/img/card.svg" width="80%"></img>
+</div>
+
+---
+
+# Étape 3. Établir le type d'associations entre les tables
+
+## Ils en existent plusieurs:
+
+| Table 1   | Table 2   | Relation                                       | exemple                        |
+|:----------|:----------|:-----------------------------------------------|:-------------------------------|
+| 1         | 1         | *one-to-one*                                   | personne ←→ permis de conduire |
+| 0..1 ou ? | 1         | optionnel dans la table 1, *one-to-one*        | permis de conduire ←→ personne |
+| 0..n ou n | 0..n or n | optionnel dans les deux tables, *many-to-many* | personne ←→ livre              |
+| 1..n ou n | 1         | *many-to-one*                                  | personne ←→ lieu de naissance  |
+
+**Exercice (5 minutes)**: Quel(s) type(s) d'associations retrouve-t-on entre nos tables?
+
+---
+
+# Étape 4. Établir les clés primaires et étrangères
+
+## Le concept de clés primaires et clés étrangères
+
+<div style='text-align:center;'>
+  <img src="assets/img/keys_1.svg" width="70%"></img>
+</div>
+
+**Note:** Une `clé primaire` ne peut jamais être `NULL`.
+
+---
+
+# Étape 4. Établir les clés primaires et étrangères
+
+**Exercice (5 minutes)**
+
+1. Déterminer qu'elles sont les attributs/colonnes garantissant le caractère unique d'un enregistrement (ligne d'une table).
+2. Déterminer qu'elles sont les clés étrangères.
 
 
 ---
 
-# Étape 2. Regrouper les champs dans des tables
+# Étape 5. Assigner un type de données aux attributs
 
+Chaque attribut d'une table doit correspondre à un type de données:
+
+| Appelation                | Type                 | Valeurs     | Taille           |
+|:--------------------------|:---------------------|:------------|:-----------------|
+| `BOLEAN`                  | Boléen               | vrai/faux   | 1 octet          |
+| `INTEGER`                 | Entiers              | -998, 123   | 1 à 4 octets     |
+| `DOUBLE`, `FLOAT`         | Nombres réels        | 9.98, -4.34 | 4 à 8 octets     |
+| `CHAR`,`VARCHAR`          | Chaine de caractères | lapin       | n x 1 à 8 octets |
+| `TIMESTAMP`,`DATE`,`TIME` | Dates et heures      | 1998-02-16  | 4 à 8 octets     |
+
+Pour tous les type de données, [voir la documentation PostgreSQL](http://docs.postgresql.fr/9.2/datatype.html)
+
+**Exercice (15 minutes):** Associer à chaque attribut un type de données.
 
 ---
 
-# Étape 3. Assigner un type de données
+# En résumé
 
+## Finalement, qu'est ce qu'un modèle conceptuel pour une base de données?
 
----
+Une façon de représenter l'information dans un modèle de type entités-relations où chaque entité (table) dispose d'attributs (colonnes).
 
-# Étape 4. Établir les contraintes
-
-
----
-
-# Étape 5. Établir le type de jointure entre les tables
-
+L'étape suivante est de transcrire ce modèle conceptuel des données en modèle logique de données (c.a.d compréhensible par l'ordinateur).
 
 --- .transition
 
@@ -301,6 +373,7 @@ Soyez attentif car le travail de cette semaine consiste écrire un script qui pe
 ---
 
 # Se connecter au SGBD (PostgreSQL) via R
+
 
 ---
 
