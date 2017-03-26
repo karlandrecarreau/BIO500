@@ -75,6 +75,8 @@ assets      :
 - Séparer les données brutes des données destinées aux analyses.
 - Rendre flexible la préparation des données pour les analyses.
 - Pemettre le travail simultané de plusieurs utilisateurs grâce à l'approche client-serveur.
+- Déclencher des procédures de sauvegardes.
+- Suivre les modifications/ajouts à la BD (journal de transactions).
 
 --- &twocolw w1:40% w2:60%
 
