@@ -504,7 +504,7 @@ L'étape suivante est de transcrire ce modèle conceptuel des données en modèl
 2. Créer la base de données
 3. Créer les tables et spécifier les clés
 4. Ajouter de l'information dans les tables
-5. Faire des requêtes pour extraire l'information 
+5. Faire des requêtes pour extraire l'information
 
 ---
 
