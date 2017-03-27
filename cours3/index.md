@@ -255,7 +255,7 @@ Il faut ouvrir un terminal avec `<ctrl> <alt> <t>` et ensuite taper R
 - Il existe une grande diversité de clients, mais nous utiliserons essentiellement les trois suivants:
   - **pgadmin3**: logiciel avec une interface graphique.
   - **R**: language de programmation scientifique.
-  - **psql**: un autre language utile (si le temps le permet).
+<!-- - **psql**: un autre language utile (si le temps le permet). -->
 
 <!-- Question, qu'est qui distingue un logiciel d'un langage? -->
 
@@ -399,7 +399,7 @@ Soyez attentifs, car le travail de cette semaine consiste à écrire un script q
 **Exercice (15-20 minutes):**
 
 1. Dresser la liste des informations collectées par les différents groupes.
-2. Regrouper les variables communes entre les groupes pour obtenir une ontologie conjointe.
+2. Regrouper les variables communes entre les équipes pour obtenir une ontologie conjointe.
 
 ---
 
@@ -408,7 +408,7 @@ Soyez attentifs, car le travail de cette semaine consiste à écrire un script q
 **Exercice (15-20 minutes):** Regrouper les variables dans des tables.
 
 1. Déterminer les tables/entités:
-  - Qu'elles sont les unités d'échantillonnage? autrement dit, sur quelles entités portent nos mesures?
+  - Qu'elles sont les unités d'échantillonnage? Autrement dit, sur quelles entités portent nos mesures?
 2. Remplir les tables avec les variables de l'étape 1.
 
 
@@ -460,7 +460,7 @@ Soyez attentifs, car le travail de cette semaine consiste à écrire un script q
 
 **Exercice (5 minutes)**
 
-1. Déterminer quelles sont les attributs/colonnes garantissant le caractère unique d'un enregistrement (ligne d'une table).
+1. Déterminer quels sont les attributs/colonnes garantissant le caractère unique d'un enregistrement (ligne d'une table).
 2. Déterminer quelles sont les clés étrangères.
 
 
@@ -495,6 +495,16 @@ L'étape suivante est de transcrire ce modèle conceptuel des données en modèl
 --- .transition
 
 # Transcrire ces étapes en SQL
+
+---
+
+# Les grandes étapes
+
+1. Spécifier la connexion avec le serveur
+2. Créer la base de données
+3. Créer les tables et spécifier les clés
+4. Ajouter de l'information dans les tables
+5. Faire des requêtes pour extraire l'information 
 
 ---
 
@@ -539,9 +549,9 @@ dbSendQuery(con,"Instructions SQL à envoyer")
 
 *** =left
 
-- `con` est un objet contenant la connection avec le serveur.
+- `con` est un objet contenant la connexion avec le serveur.
 - On utilisera la fonction `dbSendQuery()` pour envoyer les instructions SQL.
-- Le deuxième argument de la fonction `dbSendQuery()` est une chaine de caractère contenant les instructions SQL.
+- Le deuxième argument de la fonction `dbSendQuery()` est une chaine de caractères contenant les instructions SQL.
 
 ---&twocolw w1:45% w2:50%
 
@@ -555,13 +565,11 @@ dbSendQuery(con,"Instructions SQL à envoyer")
 
 *** =left
 
-- On préfère parfois une interface graphique pour interagir avec la SGBD.
+- On préfère parfois un interface graphique pour interagir avec la SGBD.
 
 ---&twocolw w1:50% w2:50%
 
 # Création de la base de données via R
-
-La première étable consiste à créer une base de données.
 
 
 
