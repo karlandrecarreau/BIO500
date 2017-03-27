@@ -15,7 +15,9 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
+
 ---
+
 # Séance 3
 
 - Ces diapositives sont disponibles en [version web](https://econumuds.github.io/BIO500/cours3/) et en [PDF](./assets/pdf/S3-BIO500.pdf).
@@ -23,6 +25,126 @@ assets      :
 
 <!-- TODO 1: Mettre cours 2 en PDF -->
 <!-- TODO 2: Changer le lien moodle -->
+
+--- .transition
+
+# Survol de Linux / Ubuntu
+
+---&twocol
+
+# L'environnement UNITY
+
+*** =left
+
+- Le lanceur
+- Naviguer dans les fichers : `<ctrl> <n>`
+- Chercher un programme
+- Changer les paramètres
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/unity.png" width="100%"></img>
+</div>
+
+
+---&twocol
+
+# L'environnement UNITY
+
+*** =left
+
+## Le terminal
+
+- Lancer le terminal `<ctrl> <alt> <t>`
+- Changer de répertoire avec `cd`
+- Liste des fichiers dans le dossier actuel avec `ls`
+- Installer des programmes `sudo apt install unity-tweak-tool`
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/terminal.png" width="90%"></img>
+</div>
+
+---&twocol
+
+# L'environnement UNITY
+
+*** =left
+
+## Lire un PDF
+
+- Le programme par défaut est `Visionneur`
+- D'autres programmes sont disponibles, notamment pour éditer des PDFs. J'utilise `xournal`.
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/miraldo.png" width="90%"></img>
+</div>
+
+---&twocol
+
+# L'environnement UNITY
+
+*** =left
+
+## Naviguer sur le web
+
+- `FireFox` est le navigateur par défaut, vous pouvez aussi utiliser `Chrome`
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/firefox.png" width="90%"></img>
+</div>
+
+---&twocol
+
+# Démarrer des programmes
+
+*** =left
+
+## SublimeText2
+
+- Ouvrir un script
+- Nouveau script
+- Changer le surligneur de syntaxe
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/sublimetext.png" width="90%"></img>
+</div>
+
+---
+
+# Démarrer des programmes
+
+## Lancer R à partir de SublimeText
+
+- Il faut lancer 'SublimeREPL' au moyen des touches `<ctrl> <shift> <p>` et sélection R
+- Une fois la nouvelle fenêtre ouverte, les commandes peuvent être soumises avec `<ctrl> <enter>`
+
+**ASTUCE:** les fenêtres sur Linux peuvent être alignées sur la gauche, la droite ou le centre automatiquement au moyen de la commande `<ctr> <alt> <flèche>`
+
+
+---&twocol
+
+# Démarrer des programmes
+
+*** =left
+
+## R directement dans le terminal
+
+Il faut ouvrir un terminal avec `<ctrl> <alt> <t>` et ensuite taper R
+
+*** =right
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/terminalR.png" width="90%"></img>
+</div>
 
 --- .transition
 
@@ -287,7 +409,7 @@ Soyez attentifs, car le travail de cette semaine consiste à écrire un script q
 
 1. Déterminer les tables/entités:
   - Qu'elles sont les unités d'échantillonnage? autrement dit, sur quelles entités portent nos mesures?
-2. Remplir les tables avec les champs de l'étape 1.
+2. Remplir les tables avec les variables de l'étape 1.
 
 
 À ce stade de la conceptualisation, une table est une entité possédant des attributs. Chaque attribut est une colonne.
@@ -412,14 +534,14 @@ con <- dbConnect(PostgreSQL(), host="localhost",
 
 
 ```r
-dbSendQuery(con,"Requête SQL à envoyer")
+dbSendQuery(con,"Instructions SQL à envoyer")
 ```
 
 *** =left
 
 - `con` est un objet contenant la connection avec le serveur.
 - On utilisera la fonction `dbSendQuery()` pour envoyer les instructions SQL.
-- Le deuxième argument de la fonction `dbSendQuery()` est une chaine de caractère contenant la requête SQL.
+- Le deuxième argument de la fonction `dbSendQuery()` est une chaine de caractère contenant les instructions SQL.
 
 ---&twocolw w1:45% w2:50%
 
@@ -439,7 +561,9 @@ dbSendQuery(con,"Requête SQL à envoyer")
 
 # Création de la base de données via R
 
-## La première étable consiste à créer une base de données.
+La première étable consiste à créer une base de données.
+
+
 
 
 
