@@ -324,10 +324,13 @@ Soyez attentifs, car le travail de cette semaine consiste à écrire un script q
 ## Le concept des clés primaires et des clés étrangères
 
 <div style='text-align:center;'>
-  <img src="assets/img/keys_1.svg" width="70%"></img>
+  <img src="assets/img/keys_1.svg" width="45%"></img>
 </div>
 
-**Note:** Une clé primaire ne peut jamais être `NULL`.
+## Important:
+  - Une clé primaire garantie le caractère unique d'un enregistrement (ligne d'une table).
+  - Une clé primaire ne peut donc jamais être `NULL`.
+  - Une clé primaire peut être composite, une combinaison de colonnes.
 
 ---
 
@@ -373,28 +376,73 @@ L'étape suivante est de transcrire ce modèle conceptuel des données en modèl
 
 ---
 
+# Se connecter au SGBD (PostgreSQL)
+
+## Pour que le client communique avec la SGBD, les informations de connection au serveur sont indispensables:
+
+1. `host`: L'adresse du serveur. `localhost` si la base de données est sur votre ordinateur.
+2. `port`: La base de données écoute sur un port spécifique du serveur.
+3. `user`: le nom d'utilisateur
+4. `password`: le mot de passe de l'utilisateur.
+5. `dbname`: le nom de la base de données
+
+---&twocolw w1:50% w2:50%
+
 # Se connecter au SGBD (PostgreSQL) via R
 
+*** =right
 
----
+
+```r
+library(RPostgreSQL)
+```
+
+```
+## Error in library(RPostgreSQL): there is no package called 'RPostgreSQL'
+```
+
+```r
+con <- dbConnect(PostgreSQL(), host="localhost",
+        port=5432, user= "postgres", password=NA)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbConnect"
+```
+
+
+```r
+dbSendQuery(con,"Requête SQL à envoyer")
+```
+
+*** =left
+
+- `con` est un objet contenant la connection avec le serveur.
+- On utilisera la fonction `dbSendQuery()` pour envoyer les instructions SQL.
+- Le deuxième argument de la fonction `dbSendQuery()` est une chaine de caractère contenant la requête SQL.
+
+---&twocolw w1:45% w2:50%
 
 # Se connecter au SGBD (PostgreSQL) via pgAdmin3
 
----
+*** =right
 
-# Création de la base de données
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/pgadmin.png" width="90%"></img>
+</div>
+
+*** =left
+
+- On préfère parfois une interface graphique pour interagir avec la SGBD.
+
+---&twocolw w1:50% w2:50%
+
+# Création de la base de données via R
+
+## La première étable consiste à créer une base de données.
 
 
----
-
-# Création des tables et jointure
 
 
----
-
-# Modifier une table existante
 
 
----
-
-# Supprimer la base de données
