@@ -48,38 +48,579 @@ assets      :
 
 ---
 
-# Connexion au serveur de l'UdS
+# Connexion au serveur
 
-L'adresse du serveur est `pyrole.dbio.fsci.usherbrooke.ca` sur le port `5432`.
-Il faut remplacer l'objet `pass` par le mot de passe du tableau.
+L'adresse du serveur est `localhost` sur le port `5432`.
 
-
-
+## On ouvre la connexion:
 
 
+```r
+library(RPostgreSQL)
+
+con <- dbConnect(PostgreSQL(),
+        host="localhost",
+        port=5432,
+        user= "postgres",
+        password=NA)
+
+# On créé la base de données
+dbSendQuery(con,"DROP DATABASE IF EXISTS bd_films;")
+dbSendQuery(con,"CREATE DATABASE bd_films;")
+# On se connect à la nouvelle base de données
+con <- dbConnect(con,dbname="bd_films")
+```
+
+---
+
+# Création de la table `films`
+
+
+```r
+tbl_films <- "CREATE TABLE films (
+    id_film     integer,
+    titre       varchar(300),
+    annee_prod   integer,
+    PRIMARY KEY (id_film)
+);"
+
+dbSendQuery(con,tbl_films)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbSendQuery"
+```
+
+**Question:** Sur ce script, où sont les instructions SQL? Òu sont les commandes R?
+
+---
+
+# Création de la table `acteurs`
 
 
 
+```r
+tbl_acteurs <- "CREATE TABLE acteurs (
+    id_acteur   integer,
+    nom         varchar(100),
+    prenom      varchar(100),
+    id_film     integer,
+    PRIMARY KEY (id_acteur),
+    FOREIGN KEY (id_film) REFERENCES films (id_film) ON DELETE CASCADE
+);"
+
+dbSendQuery(con,tbl_acteurs)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbSendQuery"
+```
+
+---
+
+# pgAdmin3
+
+`pgAdmin3` est un client avec une interface graphique permettant de visualiser si les opérations de création de tables ont bien été réalisées.
+
+
+--- .transition
+
+# Ajouter de l'information dans les tables
+
+---
+
+# SQL - `INSERT`
+
+On veut maintenant insérer des données dans les tables `acteurs` et `films`.
+
+## L'instruction `INSERT` permet d'insérer une ligne à la fois:
+
+```sql
+INSERT INTO films(id_film,titre,annee_prod) VALUES (1,'la vie est belle',1997);
+INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(1,'Nicoletta','Braschi',1);
+INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,'Roberto','Benigni',1);
+```
+
+---
+
+# Exercice (10 minutes)
+
+1. Prenez un film de votre choix et insérer son titre et son année de parution dans la table `films`.
+2. Insérer les acteurs de ce film dans la tables `acteurs`.
+
+---
+
+# SQL - `COPY ... FROM`
+
+L'instruction SQL `COPY ... FROM` permet d'insérer plusieurs ligne à la fois:
+
+```sql
+
+COPY films FROM '/Users/SteveVissault/Documents/Git/BIO500/cours4/pres/assets/donnees/bd_beacon/bd_acteurs.csv'
+WITH FORMAT CSV HEADER DELIMITER ';';
+
+```
+
+Documentation: [http://docs.postgresql.fr/9.5/sql-copy.html](http://docs.postgresql.fr/9.5/sql-copy.html)
+
+---
+
+# RPostgreSQL - `dbWriteTable`
+
+La librairie RPostgreSQL peut nous aider plus facilement à accomplir cette tâche:
+
+
+```r
+# Lecture des fichiers CSV
+bd_films <- read.csv2(file='./assets/donnees/bd_beacon/bd_films.csv')
+bd_acteurs <- read.csv2(file='./assets/donnees/bd_beacon/bd_acteurs.csv')
+
+# Injection des enregistrements dans la BD
+dbWriteTable(con,append=TRUE,name="films",value=bd_films, row.names=FALSE)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbWriteTable"
+```
+
+```r
+dbWriteTable(con,append=TRUE,name="acteurs",value=bd_acteurs, row.names=FALSE)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbWriteTable"
+```
+
+---
+
+# pgAdmin3
+
+Il est également possible d'insérer des données à partir du logiciel `pgAdmin3`.
+
+AJOUTER SCREENSHOT
+
+---
+
+# Exercice (15 minutes)
+
+1. Dans une base de données locale `bd_films`, injecter les films de l'année 2007 avec leurs acteurs. Les données brutes sont contenues dans les fichiers [ex_2007_acteurs.csv](./assets/donnees/bd_beacon/ex_2007_acteurs.csv) et [ex_2007_films.csv](./assets/donnees/bd_beacon/ex_2007_films.csv).
+
+Vous pouvez utiliser la commande R `dbWriteTable`, l'instruction SQL `COPY` ou encore pgAdmin3 pour insérer les données.
+
+---.transition
+
+# Les requêtes
+
+---&twocol
+
+# Sélectionner des tables et des colonnes
+
+La connection est ouverte et accessible depuis l'objet `con`.
+
+*** =left
 
 
 
+```r
+sql_requete <- "
+SELECT id_film, titre, annee_prod
+  FROM films LIMIT 10
+;"
+
+films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(films)
+```
+
+```
+## Error in head(films): object 'films' not found
+```
+
+*** =right
+
+- `SELECT` spécifie les colonnes.
+- `FROM` spécifie la table.
+- On peut également ajouter une `LIMIT`.
+- [Documentation SQL Select](http://docs.postgresqlfr.org/9.5/sql-select.html).
 
 
+---&twocol
+
+# Ordonner la table
+
+*** =left
 
 
+```r
+sql_requete <- "
+SELECT titre, annee_prod, id_film
+  FROM films ORDER BY annee_prod DESC
+;"
+derniers_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(derniers_films)
+```
+
+```
+## Error in head(derniers_films): object 'derniers_films' not found
+```
+
+*** =right
+
+- `ORDER BY` permet de trier par odre croissant (`ASC`) ou décroissant (`DESC`).
+
+---&twocol
+
+# Filtrer les absences de valeurs
+
+*** =left
 
 
+```r
+sql_requete <- "
+SELECT id_film, titre, annee_prod
+  FROM films WHERE annee_prod IS NOT NULL
+  ORDER BY annee_prod DESC
+;"
+derniers_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(derniers_films)
+```
+
+```
+## Error in head(derniers_films): object 'derniers_films' not found
+```
+
+*** =right
+
+- `WHERE`, spécifie les critères de la requète.
+- `IS NULL`
+
+---&twocol
+
+# Modifier les critères
+
+*** =left
 
 
+```r
+sql_requete <- "
+SELECT id_film, titre, annee_prod
+  FROM films WHERE titre LIKE '%Voyage%'
+  AND annee_prod >= 1950
+;"
+derniers_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(derniers_films)
+```
+
+```
+## Error in head(derniers_films): object 'derniers_films' not found
+```
+
+*** =right
+
+- Multi-critères: `AND` `OR`
+- Recherche sur le texte: `LIKE`, `_`
+- Opérateurs de comparaison: `>=`,`<=`, `==` (Valeurs numériques)
+- https://www.postgresql.org/docs/9.1/static/functions-comparison.html
+
+---&twocol
+
+# Opération sur la table
+
+*** =left
 
 
+```r
+sql_requete <- "
+SELECT avg(annee_prod) AS moyenne,
+  min(annee_prod), max(annee_prod)
+  FROM films;"
+
+resume_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(resume_films)
+```
+
+```
+## Error in head(resume_films): object 'resume_films' not found
+```
+
+*** =right
+
+- Faire des opérations sur les champs: `max`, `min`, `sum`, `avg`.
+- Renommer les colonnes: `AS`.
+
+---&twocol
+
+# Opération sur la table
+
+*** =left
 
 
+```r
+sql_requete <- "
+SELECT count(titre) AS nb_films, annee_prod
+  FROM films
+  GROUP BY annee_prod;"
+
+resume_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(resume_films)
+```
+
+```
+## Error in head(resume_films): object 'resume_films' not found
+```
+
+*** =right
+
+- `GROUP BY` définit les champs sur lequel se fera l'aggregation des données.
+
+---
+
+# Exercice
 
 
+Compter le nombre d'acteurs par films
+Ordonner par acteur plus prolifique.
+
+---
+
+# Jointures entre tables
+
+Le `INNER JOIN` est un type de jointure, renvoyant seulement les films et les acteurs ayant un identifiant `id_film` commun.
 
 
+```r
+sql_requete <- "
+SELECT titre, annee_prod, films.id_film, acteurs.id_film
+  FROM films
+  INNER JOIN acteurs ON films.id_film = acteurs.id_film
+  ;"
+
+acteurs_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(acteurs_films,4)
+```
+
+```
+## Error in head(acteurs_films, 4): object 'acteurs_films' not found
+```
+
+---
+
+# Les type de jointures
+
+<div style='text-align:center;margin-top:10px;'>
+  <img src="assets/img/sql_joins.png" width="80%"></img>
+</div>
 
 
+---
+
+# Jointures entre tables
+
+On peut spécifier la jointure avec `USING` seulement si les deux clés possèdent le même nom.
 
 
+```r
+sql_requete <- "
+SELECT titre, annee_prod, nom, prenom
+  FROM films
+  INNER JOIN acteurs USING (id_film)
+  ;"
+
+acteurs_films <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(acteurs_films,4)
+```
+
+```
+## Error in head(acteurs_films, 4): object 'acteurs_films' not found
+```
+
+
+---
+
+# Exercice 3
+
+## Combien il y a d'acteurs par film depuis les 10 dernières années?
+
+Toujours avec la même base de données,
+on voudrait savoir le nombre d'acteurs par film depuis les 10 dernières années.
+
+---
+
+# Exercice 4
+
+## Existe-t-il un film sans acteurs?
+
+En vous servant de la base de données sur le serveur `pyrolle` et des types de jointures, on voudrait savoir s'il existe des films sans acteurs.
+
+
+---
+
+# Exercice 4
+
+## Croisé dynamique
+
+Nombre d'acteurs par année, par film
+
+---
+
+# Requêtes emboitées
+
+On s'interroge sur le nombre moyen d'acteurs par années.
+Pour ce faire, on peut batîr une requête à partir d'autre requête.
+
+
+```r
+sql_requete <- "
+SELECT annee_prod, avg(nb_acteurs) AS mu FROM (
+  SELECT titre, annee_prod, count(nom) AS nb_acteurs
+    FROM films
+    INNER JOIN acteurs USING (id_film)
+    GROUP BY annee_prod, titre
+) AS nb_acteurs_film
+GROUP BY annee_prod;"
+
+nb_acteurs <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(nb_acteurs)
+```
+
+```
+## Error in head(nb_acteurs): object 'nb_acteurs' not found
+```
+
+---
+
+# Filtrer les requêtes
+
+ <!-- Reprendre ici -->
+
+Avec HAVING
+
+
+```r
+sql_requete <- "
+SELECT annee_prod, avg(nb_acteurs) AS mu FROM (
+  SELECT titre, annee_prod, count(nom) AS nb_acteurs
+    FROM films
+    INNER JOIN acteurs USING (id_film)
+    GROUP BY annee_prod, titre
+) AS nb_acteurs_film
+GROUP BY annee_prod
+HAVING avg(nb_acteurs) > 10;"
+
+nb_acteurs <- dbGetQuery(con,sql_requete)
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "dbGetQuery"
+```
+
+```r
+head(nb_acteurs)
+```
+
+```
+## Error in head(nb_acteurs): object 'nb_acteurs' not found
+```
+
+---.transition
+
+# Sauvegarder les requêtes
+
+---
+
+# Sauvegarder une requête
+
+Avec COPY ... TO
+
+---
+
+# Sauvegarder une requête
+
+Avec RPostgreSQL
+
+---
+
+# Les vues
+
+- Deux sortes
+  - Vue normale
+  - Vue qui se met à jour sur demande (vue matérialisé)
+
+
+---.transition
+
+# Manipuler les enregistrements
+
+---
+
+# Mettre à jour des enregistrements
+
+Avec UPDATE
+
+---
+
+# Supprimer des enregistrements  
+
+Avec DELETE

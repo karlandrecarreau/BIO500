@@ -48,35 +48,9 @@ assets      :
 
 ---
 
-# Connexion au serveur de l'UdS
+# Connexion au serveur
 
-L'adresse du serveur est `pyrole.dbio.fsci.usherbrooke.ca` sur le port `5432`.
-Il faut remplacer l'objet `pass` par le mot de passe du tableau.
-
-```{r echo=FALSE, error=FALSE, message=FALSE}
-## Cette partie ne s'affiche pas dans la présentation est c'est normale
-library(RPostgreSQL)
-
-  # On peut se connecter à distance sur le serveur pyrole (seulement à l'intérieur de l'UdS)
-  # mdp <- readLines("assets/donnees/password.txt")
-  #
-  # con <- dbConnect(PostgreSQL(), host="pyrole.dbio.fsci.usherbrooke.ca",
-  #         port=5432, user= "postgres", password=mdp)
-  # dbSendQuery(con,"DROP DATABASE IF EXISTS bd_films;")
-  # dbSendQuery(con,"CREATE DATABASE bd_films;")
-  # con <- dbConnect(PostgreSQL(), host="pyrole.dbio.fsci.usherbrooke.ca",
-  #         port=5432, user= "postgres", password=mdp,dbname="bd_films")
-
-  # On peut pas se connecter à distance, alors on ouvre une connexion local.
-  con <- dbConnect(PostgreSQL(), host="localhost",
-          port=5432, user= "postgres")
-  rs <- dbSendQuery(con,"DROP DATABASE IF EXISTS bd_films;")
-  rs <- dbSendQuery(con,"CREATE DATABASE bd_films;")
-
-  con <- dbConnect(PostgreSQL(), host="localhost",
-          port=5432, user= "postgres",dbname="bd_films")
-
-```
+L'adresse du serveur est `localhost` sur le port `5432`.
 
 ## On ouvre la connexion:
 
@@ -84,10 +58,10 @@ library(RPostgreSQL)
 library(RPostgreSQL)
 
 con <- dbConnect(PostgreSQL(),
-        host="pyrole.dbio.fsci.usherbrooke.ca",
+        host="localhost",
         port=5432,
         user= "postgres",
-        password=pass)
+        password=NA)
 
 # On créé la base de données
 dbSendQuery(con,"DROP DATABASE IF EXISTS bd_films;")
@@ -129,7 +103,6 @@ tbl_acteurs <- "CREATE TABLE acteurs (
 );"
 
 dbSendQuery(con,tbl_acteurs)
-
 ```
 
 ---
@@ -154,7 +127,7 @@ On veut maintenant insérer des données dans les tables `acteurs` et `films`.
 ```sql
 INSERT INTO films(id_film,titre,annee_prod) VALUES (1,'la vie est belle',1997);
 INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(1,'Nicoletta','Braschi',1);
-INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,'Robertox','Benigni',1);
+INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,'Roberto','Benigni',1);
 ```
 
 ---
@@ -168,13 +141,16 @@ INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,'Robertox','Benigni',
 
 # SQL - `COPY ... FROM`
 
-L'instruction `COPY ... FROM` permet d'insérer plusieurs ligne à la fois:
+L'instruction SQL `COPY ... FROM` permet d'insérer plusieurs ligne à la fois:
 
 ```sql
 
-COPY  FROM
+COPY films FROM '/Users/SteveVissault/Documents/Git/BIO500/cours4/pres/assets/donnees/bd_beacon/bd_acteurs.csv'
+WITH FORMAT CSV HEADER DELIMITER ';';
 
 ```
+
+Documentation: [http://docs.postgresql.fr/9.5/sql-copy.html](http://docs.postgresql.fr/9.5/sql-copy.html)
 
 ---
 
@@ -198,7 +174,7 @@ dbWriteTable(con,append=TRUE,name="acteurs",value=bd_acteurs, row.names=FALSE)
 
 Il est également possible d'insérer des données à partir du logiciel `pgAdmin3`.
 
-Ajouter
+AJOUTER SCREENSHOT
 
 ---
 
@@ -347,6 +323,10 @@ head(resume_films)
 
 # Exercice
 
+
+Compter le nombre d'acteurs par films
+Ordonner par acteur plus prolifique.
+
 ---
 
 # Jointures entre tables
@@ -393,7 +373,7 @@ head(acteurs_films,4)
 
 ---
 
-# Exercice 1
+# Exercice 3
 
 ## Combien il y a d'acteurs par film depuis les 10 dernières années?
 
@@ -402,12 +382,20 @@ on voudrait savoir le nombre d'acteurs par film depuis les 10 dernières années
 
 ---
 
-# Exercice 2
+# Exercice 4
 
 ## Existe-t-il un film sans acteurs?
 
 En vous servant de la base de données sur le serveur `pyrolle` et des types de jointures, on voudrait savoir s'il existe des films sans acteurs.
 
+
+---
+
+# Exercice 4
+
+## Croisé dynamique
+
+Nombre d'acteurs par année, par film
 
 ---
 

@@ -106,21 +106,20 @@
 <slide class="" id="slide-4" style="background:;">
   <!--  <a href="#slide-4"></a> -->
   <hgroup>
-    <h1>Connexion au serveur de l&#39;UdS</h1>
+    <h1>Connexion au serveur</h1>
   </hgroup>
   <article data-timings="">
-    <p>L&#39;adresse du serveur est <code>pyrole.dbio.fsci.usherbrooke.ca</code> sur le port <code>5432</code>.
-Il faut remplacer l&#39;objet <code>pass</code> par le mot de passe du tableau.</p>
+    <p>L&#39;adresse du serveur est <code>localhost</code> sur le port <code>5432</code>.</p>
 
 <h2>On ouvre la connexion:</h2>
 
 <pre><code class="r">library(RPostgreSQL)
 
 con &lt;- dbConnect(PostgreSQL(),
-        host=&quot;pyrole.dbio.fsci.usherbrooke.ca&quot;,
+        host=&quot;localhost&quot;,
         port=5432,
         user= &quot;postgres&quot;,
-        password=pass)
+        password=NA)
 
 # On créé la base de données
 dbSendQuery(con,&quot;DROP DATABASE IF EXISTS bd_films;&quot;)
@@ -148,7 +147,7 @@ con &lt;- dbConnect(con,dbname=&quot;bd_films&quot;)
 dbSendQuery(con,tbl_films)
 </code></pre>
 
-<pre><code>## &lt;PostgreSQLResult&gt;
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbSendQuery&quot;
 </code></pre>
 
 <p><strong>Question:</strong> Sur ce script, où sont les instructions SQL? Òu sont les commandes R?</p>
@@ -174,7 +173,7 @@ dbSendQuery(con,tbl_films)
 dbSendQuery(con,tbl_acteurs)
 </code></pre>
 
-<pre><code>## &lt;PostgreSQLResult&gt;
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbSendQuery&quot;
 </code></pre>
 
   </article>
@@ -213,7 +212,7 @@ dbSendQuery(con,tbl_acteurs)
 
 <pre><code class="sql">INSERT INTO films(id_film,titre,annee_prod) VALUES (1,&#39;la vie est belle&#39;,1997);
 INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(1,&#39;Nicoletta&#39;,&#39;Braschi&#39;,1);
-INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,&#39;Robertox&#39;,&#39;Benigni&#39;,1);
+INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,&#39;Roberto&#39;,&#39;Benigni&#39;,1);
 </code></pre>
 
   </article>
@@ -239,12 +238,15 @@ INSERT INTO acteurs(id_acteur,prenom,nom,id_film) VALUES(2,&#39;Robertox&#39;,&#
     <h1>SQL - <code>COPY ... FROM</code></h1>
   </hgroup>
   <article data-timings="">
-    <p>L&#39;instruction <code>COPY ... FROM</code> permet d&#39;insérer plusieurs ligne à la fois:</p>
+    <p>L&#39;instruction SQL <code>COPY ... FROM</code> permet d&#39;insérer plusieurs ligne à la fois:</p>
 
 <pre><code class="sql">
-COPY  FROM
+COPY films FROM &#39;/Users/SteveVissault/Documents/Git/BIO500/cours4/pres/assets/donnees/bd_beacon/bd_acteurs.csv&#39;
+WITH FORMAT CSV HEADER DELIMITER &#39;;&#39;;
 
 </code></pre>
+
+<p>Documentation: <a href="http://docs.postgresql.fr/9.5/sql-copy.html">http://docs.postgresql.fr/9.5/sql-copy.html</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -265,13 +267,13 @@ bd_acteurs &lt;- read.csv2(file=&#39;./assets/donnees/bd_beacon/bd_acteurs.csv&#
 dbWriteTable(con,append=TRUE,name=&quot;films&quot;,value=bd_films, row.names=FALSE)
 </code></pre>
 
-<pre><code>## [1] TRUE
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbWriteTable&quot;
 </code></pre>
 
 <pre><code class="r">dbWriteTable(con,append=TRUE,name=&quot;acteurs&quot;,value=bd_acteurs, row.names=FALSE)
 </code></pre>
 
-<pre><code>## [1] TRUE
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbWriteTable&quot;
 </code></pre>
 
   </article>
@@ -285,7 +287,7 @@ dbWriteTable(con,append=TRUE,name=&quot;films&quot;,value=bd_films, row.names=FA
   <article data-timings="">
     <p>Il est également possible d&#39;insérer des données à partir du logiciel <code>pgAdmin3</code>.</p>
 
-<p>Ajouter</p>
+<p>AJOUTER SCREENSHOT</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -329,16 +331,15 @@ SELECT id_film, titre, annee_prod
 ;&quot;
 
 films &lt;- dbGetQuery(con,sql_requete)
-head(films)
 </code></pre>
 
-<pre><code>##   id_film                   titre annee_prod
-## 1       4        &#39;Breaker&#39; Morant       1980
-## 2       5             &#39;burbs, The       1989
-## 3       6   &#39;Crocodile&#39; Dundee II       1988
-## 4       7 *batteries not included       1987
-## 5       3  ...And Justice for All       1979
-## 6       8                      10       1979
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(films)
+</code></pre>
+
+<pre><code>## Error in head(films): object &#39;films&#39; not found
 </code></pre>
 
     </div>
@@ -365,16 +366,15 @@ SELECT titre, annee_prod, id_film
   FROM films ORDER BY annee_prod DESC
 ;&quot;
 derniers_films &lt;- dbGetQuery(con,sql_requete)
-head(derniers_films)
 </code></pre>
 
-<pre><code>##              titre annee_prod id_film
-## 1  Wilson, Michael         NA    5496
-## 2     Khan, George         NA    2732
-## 3   Walker, Amanda         NA    5350
-## 4 Franklin, Cherie         NA    1823
-## 5     Thomas, Meda         NA    5030
-## 6    Cicco, Johnny         NA     984
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(derniers_films)
+</code></pre>
+
+<pre><code>## Error in head(derniers_films): object &#39;derniers_films&#39; not found
 </code></pre>
 
     </div>
@@ -399,16 +399,15 @@ SELECT id_film, titre, annee_prod
   ORDER BY annee_prod DESC
 ;&quot;
 derniers_films &lt;- dbGetQuery(con,sql_requete)
-head(derniers_films)
 </code></pre>
 
-<pre><code>##   id_film                titre annee_prod
-## 1    2354             Hot Fuzz       2007
-## 2    3663       Number 23, The       2007
-## 3    5473            Wild Hogs       2007
-## 4     727 Bridge to Terabithia       2007
-## 5    3487     Music and Lyrics       2007
-## 6    4159     Reno 911!: Miami       2007
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(derniers_films)
+</code></pre>
+
+<pre><code>## Error in head(derniers_films): object &#39;derniers_films&#39; not found
 </code></pre>
 
     </div>
@@ -434,12 +433,15 @@ SELECT id_film, titre, annee_prod
   AND annee_prod &gt;= 1950
 ;&quot;
 derniers_films &lt;- dbGetQuery(con,sql_requete)
-head(derniers_films)
 </code></pre>
 
-<pre><code>##   id_film                         titre annee_prod
-## 1    1662              Fantastic Voyage       1966
-## 2    4770 Star Trek IV: The Voyage Home       1986
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(derniers_films)
+</code></pre>
+
+<pre><code>## Error in head(derniers_films): object &#39;derniers_films&#39; not found
 </code></pre>
 
     </div>
@@ -467,11 +469,15 @@ SELECT avg(annee_prod) AS moyenne,
   FROM films;&quot;
 
 resume_films &lt;- dbGetQuery(con,sql_requete)
-head(resume_films)
 </code></pre>
 
-<pre><code>##    moyenne  min  max
-## 1 1989.853 1902 2007
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(resume_films)
+</code></pre>
+
+<pre><code>## Error in head(resume_films): object &#39;resume_films&#39; not found
 </code></pre>
 
     </div>
@@ -497,16 +503,15 @@ SELECT count(titre) AS nb_films, annee_prod
   GROUP BY annee_prod;&quot;
 
 resume_films &lt;- dbGetQuery(con,sql_requete)
-head(resume_films)
 </code></pre>
 
-<pre><code>##   nb_films annee_prod
-## 1     1278         NA
-## 2       29       1975
-## 3        9       1947
-## 4       44       1981
-## 5       27       1972
-## 6       11       1956
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(resume_films)
+</code></pre>
+
+<pre><code>## Error in head(resume_films): object &#39;resume_films&#39; not found
 </code></pre>
 
     </div>
@@ -524,7 +529,9 @@ head(resume_films)
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    
+    <p>Compter le nombre d&#39;acteurs par films
+Ordonner par acteur plus prolifique.</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -543,14 +550,15 @@ SELECT titre, annee_prod, films.id_film, acteurs.id_film
   ;&quot;
 
 acteurs_films &lt;- dbGetQuery(con,sql_requete)
-head(acteurs_films,4)
 </code></pre>
 
-<pre><code>##                     titre annee_prod id_film id_film
-## 1        &#39;Breaker&#39; Morant       1980       4       4
-## 2             &#39;burbs, The       1989       5       5
-## 3   &#39;Crocodile&#39; Dundee II       1988       6       6
-## 4 *batteries not included       1987       7       7
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(acteurs_films,4)
+</code></pre>
+
+<pre><code>## Error in head(acteurs_films, 4): object &#39;acteurs_films&#39; not found
 </code></pre>
 
   </article>
@@ -584,14 +592,15 @@ SELECT titre, annee_prod, nom, prenom
   ;&quot;
 
 acteurs_films &lt;- dbGetQuery(con,sql_requete)
-head(acteurs_films,4)
 </code></pre>
 
-<pre><code>##                     titre annee_prod         nom    prenom
-## 1        &#39;Breaker&#39; Morant       1980 Fitz-Gerald     Lewis
-## 2             &#39;burbs, The       1989        Gage     Kevin
-## 3   &#39;Crocodile&#39; Dundee II       1988    Carrasco    Carlos
-## 4 *batteries not included       1987     Vasquez David (I)
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(acteurs_films,4)
+</code></pre>
+
+<pre><code>## Error in head(acteurs_films, 4): object &#39;acteurs_films&#39; not found
 </code></pre>
 
   </article>
@@ -600,7 +609,7 @@ head(acteurs_films,4)
 <slide class="" id="slide-26" style="background:;">
   <!--  <a href="#slide-26"></a> -->
   <hgroup>
-    <h1>Exercice 1</h1>
+    <h1>Exercice 3</h1>
   </hgroup>
   <article data-timings="">
     <h2>Combien il y a d&#39;acteurs par film depuis les 10 dernières années?</h2>
@@ -614,7 +623,7 @@ on voudrait savoir le nombre d&#39;acteurs par film depuis les 10 dernières ann
 <slide class="" id="slide-27" style="background:;">
   <!--  <a href="#slide-27"></a> -->
   <hgroup>
-    <h1>Exercice 2</h1>
+    <h1>Exercice 4</h1>
   </hgroup>
   <article data-timings="">
     <h2>Existe-t-il un film sans acteurs?</h2>
@@ -626,6 +635,19 @@ on voudrait savoir le nombre d&#39;acteurs par film depuis les 10 dernières ann
 </slide>
 <slide class="" id="slide-28" style="background:;">
   <!--  <a href="#slide-28"></a> -->
+  <hgroup>
+    <h1>Exercice 4</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Croisé dynamique</h2>
+
+<p>Nombre d&#39;acteurs par année, par film</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
   <hgroup>
     <h1>Requêtes emboitées</h1>
   </hgroup>
@@ -643,23 +665,22 @@ SELECT annee_prod, avg(nb_acteurs) AS mu FROM (
 GROUP BY annee_prod;&quot;
 
 nb_acteurs &lt;- dbGetQuery(con,sql_requete)
-head(nb_acteurs)
 </code></pre>
 
-<pre><code>##   annee_prod mu
-## 1         NA  1
-## 2       1975  1
-## 3       1947  1
-## 4       1981  1
-## 5       1972  1
-## 6       1956  1
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(nb_acteurs)
+</code></pre>
+
+<pre><code>## Error in head(nb_acteurs): object &#39;nb_acteurs&#39; not found
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-29" style="background:;">
-  <!--  <a href="#slide-29"></a> -->
+<slide class="" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
   <hgroup>
     <h1>Filtrer les requêtes</h1>
   </hgroup>
@@ -679,33 +700,27 @@ GROUP BY annee_prod
 HAVING avg(nb_acteurs) &gt; 10;&quot;
 
 nb_acteurs &lt;- dbGetQuery(con,sql_requete)
-head(nb_acteurs)
 </code></pre>
 
-<pre><code>## data frame with 0 columns and 0 rows
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;dbGetQuery&quot;
+</code></pre>
+
+<pre><code class="r">head(nb_acteurs)
+</code></pre>
+
+<pre><code>## Error in head(nb_acteurs): object &#39;nb_acteurs&#39; not found
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-30" style="background:;">
-  <!--  <a href="#slide-30"></a> -->
+<slide class="transition" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
     <h1>Sauvegarder les requêtes</h1>
   </hgroup>
   <article data-timings="">
     
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-31" style="background:;">
-  <!--  <a href="#slide-31"></a> -->
-  <hgroup>
-    <h1>Sauvegarder une requête</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Avec COPY ... TO</p>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -715,13 +730,24 @@ head(nb_acteurs)
     <h1>Sauvegarder une requête</h1>
   </hgroup>
   <article data-timings="">
-    <p>Avec RPostgreSQL</p>
+    <p>Avec COPY ... TO</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-33" style="background:;">
   <!--  <a href="#slide-33"></a> -->
+  <hgroup>
+    <h1>Sauvegarder une requête</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Avec RPostgreSQL</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
   <hgroup>
     <h1>Les vues</h1>
   </hgroup>
@@ -738,8 +764,8 @@ head(nb_acteurs)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-34" style="background:;">
-  <!--  <a href="#slide-34"></a> -->
+<slide class="transition" id="slide-35" style="background:;">
+  <!--  <a href="#slide-35"></a> -->
   <hgroup>
     <h1>Manipuler les enregistrements</h1>
   </hgroup>
@@ -748,8 +774,8 @@ head(nb_acteurs)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-35" style="background:;">
-  <!--  <a href="#slide-35"></a> -->
+<slide class="" id="slide-36" style="background:;">
+  <!--  <a href="#slide-36"></a> -->
   <hgroup>
     <h1>Mettre à jour des enregistrements</h1>
   </hgroup>
@@ -759,10 +785,10 @@ head(nb_acteurs)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-36" style="background:;">
-  <!--  <a href="#slide-36"></a> -->
+<slide class="" id="slide-37" style="background:;">
+  <!--  <a href="#slide-37"></a> -->
   <hgroup>
-    <h1>supprimer des enregistrements</h1>
+    <h1>Supprimer des enregistrements</h1>
   </hgroup>
   <article data-timings="">
     <p>Avec DELETE</p>
@@ -794,7 +820,7 @@ head(nb_acteurs)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Connexion au serveur de l&#39;UdS'>
+        data-slide=4 title='Connexion au serveur'>
          4
       </a>
     </li>
@@ -926,37 +952,37 @@ head(nb_acteurs)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Exercice 1'>
+        data-slide=26 title='Exercice 3'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Exercice 2'>
+        data-slide=27 title='Exercice 4'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Requêtes emboitées'>
+        data-slide=28 title='Exercice 4'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Filtrer les requêtes'>
+        data-slide=29 title='Requêtes emboitées'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Sauvegarder les requêtes'>
+        data-slide=30 title='Filtrer les requêtes'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Sauvegarder une requête'>
+        data-slide=31 title='Sauvegarder les requêtes'>
          31
       </a>
     </li>
@@ -968,26 +994,32 @@ head(nb_acteurs)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Les vues'>
+        data-slide=33 title='Sauvegarder une requête'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Manipuler les enregistrements'>
+        data-slide=34 title='Les vues'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Mettre à jour des enregistrements'>
+        data-slide=35 title='Manipuler les enregistrements'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='supprimer des enregistrements'>
+        data-slide=36 title='Mettre à jour des enregistrements'>
          36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Supprimer des enregistrements'>
+         37
       </a>
     </li>
   </ul>
