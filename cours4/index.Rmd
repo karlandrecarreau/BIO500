@@ -201,8 +201,6 @@ dbWriteTable(con,append=TRUE,name="acteurs",value=bd_acteurs, row.names=FALSE)
 
 Il est également possible d'insérer des données à partir du logiciel `pgAdmin3`.
 
-**SCREENSHOT**
-
 ---
 
 # Exercice 2 (15 minutes)
@@ -395,7 +393,8 @@ head(resume_films)
 *** =right
 
 - Pour faire une synthèse de l'information sur une seule ligne.
-- Faire des opérations sur les champs: `max`, `min`, `sum`, `avg`, `count`.
+- Faire des opérations sur les champs numérique: `max`, `min`, `sum`, `avg`, `count`.
+- Mais aussi les opérations classiques: `*`, `/`, `-` etc.
 - Renommer les colonnes avec `AS`.
 
 ---&twocol
@@ -591,7 +590,7 @@ CREATE VIEW moyenne_acteurs AS (
   );
 ```
 
-Il sera possible d'atteindre cette vue tout simplement avec:
+Il sera possible d'atteindre cette vue plus tard avec:
 
 ```sql
 SELECT * FROM moyenne_acteurs;
@@ -605,10 +604,38 @@ SELECT * FROM moyenne_acteurs;
 
 # Mettre à jour des enregistrements
 
-Avec UPDATE
+On peut mettre à jour des enregistrements d'une table avec des critères spécifiques.
+
+```sql
+UPDATE films SET genre = 'Dramatique' WHERE genre = 'Drame';
+```
+
+Note: On peut pas faire de modifications d'enregistrements sur des vues, seulement sur les tables directement.
+
+[Documentation sur la commande UPDATE](http://docs.postgresqlfr.org/8.3/sql-update.html)
+
 
 ---
 
 # Supprimer des enregistrements  
 
-Avec DELETE
+On peut supprimer des enregistrements d'une table avec des critères spécifiques.
+
+```sql
+DELETE FROM films WHERE genre <> 'Comédie musicale';
+```
+
+Ou sans critères, pour supprimer tous les enregistrements.
+
+```sql
+DELETE FROM films;
+```
+
+[Documentation sur la commande DELETE](http://docs.postgresqlfr.org/8.3/sql-delete.html)
+
+
+---.transition
+
+# Découper les scripts avec R
+
+---
