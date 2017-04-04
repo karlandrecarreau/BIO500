@@ -38,8 +38,7 @@ assets      :
 
 **Important:**
 
-1. Pour cette partie assurez vous que êtes connecté au réseau **Aerius Sécurisé**.
-2. Pour ceux dont la VM ne fonctionne pas, il possible de faire les exercices de ce cours sur Windows ou MacOSX.
+Pour ceux dont la VM ne fonctionne pas, il possible de faire les exercices de ce cours sur Windows ou MacOSX.
 
 
 --- .transition
