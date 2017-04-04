@@ -209,6 +209,33 @@ Il est également possible d'insérer des données à partir du logiciel `pgAdmi
 
 # Sélectionner des tables et des colonnes
 
+## La connexion est ouverte et toujours accessible depuis l'objet `con`.
+
+*** =left
+
+
+```{r}
+sql_requete <- "
+SELECT id_film, titre, annee_prod
+  FROM films LIMIT 10
+;"
+
+films <- dbGetQuery(con,sql_requete)
+head(films)
+```
+
+*** =right
+
+- `SELECT` spécifie les colonnes.
+- `FROM` spécifie la table.
+- On peut également ajouter une `LIMIT`.
+- [Documentation SQL Select](http://docs.postgresqlfr.org/9.5/sql-select.html).
+
+
+---&twocol
+
+# Sélectionner des tables et des colonnes
+
 
 *** =left
 
@@ -244,32 +271,6 @@ head(films)
 *** =right
 
 - L'instruction `DISTINCT` permettra de retourner la combinaison unique de noms et prénoms présent dans la table acteurs.
-
----&twocol
-
-# Sélectionner des tables et des colonnes
-
-## La connexion est ouverte et toujours accessible depuis l'objet `con`.
-
-*** =left
-
-
-```{r}
-sql_requete <- "
-SELECT id_film, titre, annee_prod
-  FROM films LIMIT 10
-;"
-
-films <- dbGetQuery(con,sql_requete)
-head(films)
-```
-
-*** =right
-
-- `SELECT` spécifie les colonnes.
-- `FROM` spécifie la table.
-- On peut également ajouter une `LIMIT`.
-- [Documentation SQL Select](http://docs.postgresqlfr.org/9.5/sql-select.html).
 
 
 ---&twocol
