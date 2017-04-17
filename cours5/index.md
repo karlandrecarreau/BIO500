@@ -668,7 +668,7 @@ sum(L)
 ```
 
 ```
-## [1] 18
+## [1] 14
 ```
 
 ```r
@@ -810,7 +810,7 @@ modularity(wtc)
 ```
 
 ```
-## [1] 0.4151235
+## [1] 0.4872449
 ```
 
 ---
@@ -826,37 +826,37 @@ distances(g)
 
 ```
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]    0    1    3    2    2    6    4    2  Inf   Inf     5     3     1
-##  [2,]    1    0    4    3    3    7    5    3  Inf   Inf     6     4     2
-##  [3,]    3    4    0    2    1    3    1    1  Inf   Inf     2     2     2
-##  [4,]    2    3    2    0    2    5    3    1  Inf   Inf     4     1     1
-##  [5,]    2    3    1    2    0    4    2    1  Inf   Inf     3     1     1
-##  [6,]    6    7    3    5    4    0    2    4  Inf   Inf     1     5     5
-##  [7,]    4    5    1    3    2    2    0    2  Inf   Inf     1     3     3
-##  [8,]    2    3    1    1    1    4    2    0  Inf   Inf     3     2     1
-##  [9,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf    0     1   Inf   Inf   Inf
-## [10,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf    1     0   Inf   Inf   Inf
-## [11,]    5    6    2    4    3    1    1    3  Inf   Inf     0     4     4
-## [12,]    3    4    2    1    1    5    3    2  Inf   Inf     4     0     2
-## [13,]    1    2    2    1    1    5    3    1  Inf   Inf     4     2     0
-## [14,]    5    6    2    4    3    2    1    3  Inf   Inf     1     4     4
-## [15,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf   Inf   Inf   Inf   Inf
+##  [1,]    0  Inf  Inf  Inf    3    1  Inf  Inf  Inf     2     5     1     2
+##  [2,]  Inf    0    2  Inf  Inf  Inf  Inf    1  Inf   Inf   Inf   Inf   Inf
+##  [3,]  Inf    2    0  Inf  Inf  Inf  Inf    1  Inf   Inf   Inf   Inf   Inf
+##  [4,]  Inf  Inf  Inf    0  Inf  Inf  Inf  Inf  Inf   Inf   Inf   Inf   Inf
+##  [5,]    3  Inf  Inf  Inf    0    2  Inf  Inf  Inf     4     2     3     3
+##  [6,]    1  Inf  Inf  Inf    2    0  Inf  Inf  Inf     2     4     1     1
+##  [7,]  Inf  Inf  Inf  Inf  Inf  Inf    0  Inf  Inf   Inf   Inf   Inf   Inf
+##  [8,]  Inf    1    1  Inf  Inf  Inf  Inf    0  Inf   Inf   Inf   Inf   Inf
+##  [9,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf    0   Inf   Inf   Inf   Inf
+## [10,]    2  Inf  Inf  Inf    4    2  Inf  Inf  Inf     0     6     1     1
+## [11,]    5  Inf  Inf  Inf    2    4  Inf  Inf  Inf     6     0     5     5
+## [12,]    1  Inf  Inf  Inf    3    1  Inf  Inf  Inf     1     5     0     2
+## [13,]    2  Inf  Inf  Inf    3    1  Inf  Inf  Inf     1     5     2     0
+## [14,]    4  Inf  Inf  Inf    1    3  Inf  Inf  Inf     5     1     4     4
+## [15,]    2  Inf  Inf  Inf    1    1  Inf  Inf  Inf     3     3     2     2
 ##       [,14] [,15]
-##  [1,]     5   Inf
-##  [2,]     6   Inf
-##  [3,]     2   Inf
-##  [4,]     4   Inf
-##  [5,]     3   Inf
-##  [6,]     2   Inf
-##  [7,]     1   Inf
-##  [8,]     3   Inf
+##  [1,]     4     2
+##  [2,]   Inf   Inf
+##  [3,]   Inf   Inf
+##  [4,]   Inf   Inf
+##  [5,]     1     1
+##  [6,]     3     1
+##  [7,]   Inf   Inf
+##  [8,]   Inf   Inf
 ##  [9,]   Inf   Inf
-## [10,]   Inf   Inf
-## [11,]     1   Inf
-## [12,]     4   Inf
-## [13,]     4   Inf
-## [14,]     0   Inf
-## [15,]   Inf     0
+## [10,]     5     3
+## [11,]     1     3
+## [12,]     4     2
+## [13,]     4     2
+## [14,]     0     2
+## [15,]     2     0
 ```
 
 ---
@@ -871,9 +871,9 @@ eigen_centrality(g)$vector
 ```
 
 ```
-##  [1] 6.202532e-01 1.767387e-01 5.196660e-01 6.403519e-01 7.884287e-01
-##  [6] 2.430817e-02 1.951571e-01 8.401484e-01 2.633232e-17 1.927380e-17
-## [11] 8.530794e-02 4.071255e-01 1.000000e+00 7.991743e-02 4.909594e-17
+##  [1] 7.093697e-01 0.000000e+00 0.000000e+00 8.425888e-17 2.117992e-01
+##  [6] 1.000000e+00 7.986880e-17 0.000000e+00 7.986880e-17 5.539277e-01
+## [11] 3.595182e-02 8.621727e-01 5.919479e-01 9.437744e-02 4.616186e-01
 ```
 
 --- .transition
