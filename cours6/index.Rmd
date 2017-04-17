@@ -44,6 +44,11 @@ assets      :
 <img src="assets/img/latex_comp.gif" width="60%"></img>
 </div>
 
+---
+
+# Word vs $\LaTeX$
+
+
 
 ---
 
@@ -53,7 +58,6 @@ assets      :
 - C'est un language à balise.
 - Concu spécifiquement pour l'écriture de rapports scientifiques.
 - L'utilisation de $\LaTeX$ est une norme chez les mathématiciens et les physiciens.
-
 
 --- &twocol
 
@@ -88,8 +92,8 @@ Je peux écrire du texte ici.
 
 # Séparer le contenu du contenant
 
-- La mise en page est gérer par des balises (environnement)
-- Les balises déclarent le contenant (la forme)
+- La mise en page est gérer par des balises et environnements.
+- Les balises et environnements déclarent le contenant (la forme)
 - Le texte se place entre les balises (le contenu)
 - Si l'on change tout simplement de balises $\LaTeX$, on obtient une nouvelle mise en forme.
 
@@ -245,9 +249,9 @@ Transcript written on doc.log.
 
 # Créer la page titre à partir des métadonnées
 
----&twocolw w1:50% w2:45%
+*** =left
 
-Nous pouvons utiliser ces métadonnées pour produire la page titre de notre document.
+La page titre est généré grâce à la balise ```\maketitle``` dans l'environnement document.
 
 
 ```bash
@@ -257,17 +261,14 @@ Nous pouvons utiliser ces métadonnées pour produire la page titre de notre doc
 
 \maketitle
 
-\section{Mon premier article en latin}
-\lipsum[2-4]
+[...]
 
 \end{document}
 ```
 
-La page titre est généré grâce à la balise ```\maketitle``` dans l'environnement document.
-
 ## Exercice 3:
 
-- Ajouter vos métadonnées puis compilé à nouveau votre document ```.tex``` avec la page titre.
+Ajouter vos métadonnées puis compiler votre document avec la page titre.
 
 *** =right
 
@@ -281,6 +282,8 @@ La page titre est généré grâce à la balise ```\maketitle``` dans l'environn
 # Insérer un résumé
 
 *** =left
+
+On écrit notre résumé entre dans l'environnement ```abstract```.
 
 ```bash
 [...]
@@ -298,8 +301,6 @@ La page titre est généré grâce à la balise ```\maketitle``` dans l'environn
 
 \end{document}
 ```
-
-On écrit notre résumé entre dans l'environnement ```abstract```.
 
 *** =right
 
@@ -334,7 +335,8 @@ On écrit notre résumé entre dans l'environnement ```abstract```.
 *** =right
 
 - Nous n'avons pas besoin d'utiliser de ```\begin``` ou ```\end```.
-- Une section est par défault numéroté, pour éviter cette numérotation vous pouvez ajouter une ```*``` avant les accolades.
+- Une section est par défault numéroté.
+- Pour éviter cette numérotation vous pouvez ajouter une ```*``` avant les accolades.
 
 ---&twocolw w1:50% w2:45%
 
@@ -364,9 +366,33 @@ On écrit notre résumé entre dans l'environnement ```abstract```.
 \end{document}
 ```
 
+*** =right
+
+La simple déclaration de la balise ```\tableofcontent``` permet la création d'une table des matières.
+
 ## Exercice 4:
 
-Ajouter des sections à votre document et construire la table des matières.
+Ajouter des sections à votre document, et construisez la table des matières.
+Prenez le temps de lire la sortie affichée par le compilateur ```pdflatex```.
+
+---&twocolw w1:50% w2:45%
+
+# Le fichier auxiliaire (```.aux```)
+
+Lors du dernier exercice, vous avez remarqué que la table des matières n'était pas insérer dans le document.
+
+1. La première compilation scanne le document à la recherche de références internes tels que les sections.
+
+  #### Écriture d'un fichier ```mon_document.aux```:
+
+  ```bash
+  \relax
+  \@writefile{toc}{\contentsline {section}{\numberline {1}Mon premier article en latin}{1}}
+  ```
+
+2. La deuxième compilation assemble l'ensemble du document à partir du fichier ```mon_document.aux``` de la première compilation.
+
+## Il faut deux compilations successives pour obtenir la table des matières dans le document pdf.
 
 
 ---.transition
@@ -383,7 +409,7 @@ Ajouter des sections à votre document et construire la table des matières.
 ---
 
 - URL
-- Equation Symbole Inline
+-
 
 
 ---.transition
