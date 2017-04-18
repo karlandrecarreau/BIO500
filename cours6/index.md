@@ -413,7 +413,7 @@ On écrit notre résumé entre dans l'environnement `abstract`.
 
 \maketitle
 
-\tableofcontent
+\tableofcontents
 
 \section{Ma première section}
 
@@ -430,7 +430,7 @@ On écrit notre résumé entre dans l'environnement `abstract`.
 
 *** =right
 
-La simple déclaration de la balise `\tableofcontent` permet la création d'une table des matières.
+La simple déclaration de la balise `\tableofcontents` permet la création d'une table des matières.
 
 ---
 
