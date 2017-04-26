@@ -540,7 +540,7 @@ con <- dbConnect(PostgreSQL(), host="localhost",
 ```
 
 ```
-## Error in eval(expr, envir, enclos): could not find function "dbConnect"
+## Error in dbConnect(PostgreSQL(), host = "localhost", port = 5432, user = "postgres", : could not find function "dbConnect"
 ```
 
 
