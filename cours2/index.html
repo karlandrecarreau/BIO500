@@ -1622,18 +1622,8 @@ L'approche multi-utilisateurs peut uniquement se faire si le serveur est distant
     </div>
     <div class='right' style='float:right;width:60%'>
      <pre><code class="r">library(RSQLite)
-</code></pre>
-
-<pre><code>## Error in library(RSQLite): there is no package called &#39;RSQLite&#39;
-</code></pre>
-
-<pre><code class="r">con &lt;- dbConnect(SQLite(), dbname=&quot;./assets/data/films.db&quot;)
-</code></pre>
-
-<pre><code>## Error in dbConnect(SQLite(), dbname = &quot;./assets/data/films.db&quot;): could not find function &quot;dbConnect&quot;
-</code></pre>
-
-<pre><code class="r">## !ATTENTION!: Ceci est mon chemin d&#39;accès vers le fichier!
+con &lt;- dbConnect(SQLite(), dbname=&quot;./assets/data/films.db&quot;)
+## !ATTENTION!: Ceci est mon chemin d&#39;accès vers le fichier!
 ## Astuces: getwd() et setwd()
 </code></pre>
 

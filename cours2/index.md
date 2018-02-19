@@ -859,21 +859,7 @@ L'étape suivante est de transcrire ce modèle conceptuel des données en modèl
 
 ```r
 library(RSQLite)
-```
-
-```
-## Error in library(RSQLite): there is no package called 'RSQLite'
-```
-
-```r
 con <- dbConnect(SQLite(), dbname="./assets/data/films.db")
-```
-
-```
-## Error in dbConnect(SQLite(), dbname = "./assets/data/films.db"): could not find function "dbConnect"
-```
-
-```r
 ## !ATTENTION!: Ceci est mon chemin d'accès vers le fichier!
 ## Astuces: getwd() et setwd()
 ```
