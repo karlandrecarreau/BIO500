@@ -1082,7 +1082,7 @@ dbDisconnect(con)
 
 ---
 
-# Lectures et travail pour la semaine prochiane
+# Lectures et travail pour la semaine prochaine
 
 ## Travail
 
