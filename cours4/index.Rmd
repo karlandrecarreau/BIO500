@@ -62,9 +62,9 @@ MonTravailSession/
 Ses difficultées techniques:
 
 - Multi-utilisateurs
-- Garder une trace de l'historique de modifications **d'un ensemble de fichiers**.
+- Garder une trace de l'historique de modifications **d'un ensemble de fichiers**
 - Revenir aux versions précédentes
-- comparer des versions d'un fichier.
+- Comparer des versions d'un fichier
 
 ---
 
@@ -94,8 +94,7 @@ Ses difficultées techniques:
 
 C'est un système qui permet de suivre l'ajout et les modifications pour un ensemble de fichier. **C'est le cahier de lab du programmeur.**
 
-- Logiciel libre
-- Soutenu par une large communautée (12 millions d'utilisateurs dans le monde)
+- Logiciel libre soutenu par une large communautée (12 millions d'utilisateurs dans le monde)
 - Par défault, Git est installé sur les systèmes d'exploitation Linux et Mac.
 - Il peut être installé sur Windows: [https://git-scm.com/download/win](https://git-scm.com/download/win)
 
@@ -150,11 +149,13 @@ On modifie le ou les fichiers, on ajoute la modification à Git puis on met un c
 
 **En 3 étapes:**
 
-1. Modification d'un ou plusieurs fichiers sources
-2. `git add monFichier1.txt monFichier2.txt` - Ajout des fichiers modifiés
-3. `git commit -m "mon commentaire"` - Commentaire sur la modification apportée
+1. Modification d'un ou plusieurs fichiers sources (e.g. Ajout d'un paragraphe)
+2. `git add monFichier1.txt monFichier2.txt`
+3. `git commit -m "mon commentaire"`
 
 On répète ces étapes à plusieurs reprises au cours de l'écriture d'un document et/ou de l'avancé d'un projet.
+
+**Qu'est ce qu'un bon commentaire?**
 
 ---
 
@@ -330,7 +331,7 @@ En reprenant votre dépot de travail `git` (Exercice 2), parcourez votre histori
 
 # Les serveurs Git distants
 
-Jusqu'à présent nous avons travailler localement sur votre ordinateur. Il est cependant possible de synchroniser votre travail sur un serveur Git (dépots distants). Ce procédé présente deux avantages indéniables:
+Jusqu'à présent nous avons travaillé localement sur votre ordinateur. Il est cependant possible de synchroniser votre travail sur un serveur Git (dépots distants). Ce procédé présente deux avantages indéniables:
 
 1. Sauvegarder votre travail (Back-up)
 2. Permettre à un collègue de travailler avec vous sur votre dêpot.
@@ -357,7 +358,7 @@ Nous travaillerons avec GitHub, la plateforme la plus populaire, une vitrine pou
 
 ---
 
-# Cloner votre dépot distant sur le serveur Github
+# Envoyer votre dépôt local sur le serveur Github
 
 ```bash
 git remote add origin https://adresseVersVotreDepot.git
@@ -368,9 +369,9 @@ Votre dépot local vient de se transformer en dépôt distant. Cependant, rien n
 
 ---
 
-# Envoyer votre depot local sur le serveur Github
+# Envoyer votre dépôt local sur le serveur Github
 
-On va maintenant envoyé les fichiers et l'historique de modifications de ces derniers sur le serveur
+On va maintenant envoyé les fichiers et l'historique de modifications de ces derniers sur le serveur.
 
 ```bash
 git push origin master

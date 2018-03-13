@@ -116,9 +116,9 @@
 
 <ul>
 <li>Multi-utilisateurs</li>
-<li>Garder une trace de l&#39;historique de modifications <strong>d&#39;un ensemble de fichiers</strong>.</li>
+<li>Garder une trace de l&#39;historique de modifications <strong>d&#39;un ensemble de fichiers</strong></li>
 <li>Revenir aux versions précédentes</li>
-<li>comparer des versions d&#39;un fichier.</li>
+<li>Comparer des versions d&#39;un fichier</li>
 </ul>
 
     </div>
@@ -170,8 +170,7 @@
      <p>C&#39;est un système qui permet de suivre l&#39;ajout et les modifications pour un ensemble de fichier. <strong>C&#39;est le cahier de lab du programmeur.</strong></p>
 
 <ul>
-<li>Logiciel libre</li>
-<li>Soutenu par une large communautée (12 millions d&#39;utilisateurs dans le monde)</li>
+<li>Logiciel libre soutenu par une large communautée (12 millions d&#39;utilisateurs dans le monde)</li>
 <li>Par défault, Git est installé sur les systèmes d&#39;exploitation Linux et Mac.</li>
 <li>Il peut être installé sur Windows: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></li>
 </ul>
@@ -248,12 +247,14 @@ ls -a # Lister tous le contenu du répertoire de travail.
 <p><strong>En 3 étapes:</strong></p>
 
 <ol>
-<li>Modification d&#39;un ou plusieurs fichiers sources</li>
-<li><code>git add monFichier1.txt monFichier2.txt</code> - Ajout des fichiers modifiés</li>
-<li><code>git commit -m &quot;mon commentaire&quot;</code> - Commentaire sur la modification apportée</li>
+<li>Modification d&#39;un ou plusieurs fichiers sources (e.g. Ajout d&#39;un paragraphe)</li>
+<li><code>git add monFichier1.txt monFichier2.txt</code></li>
+<li><code>git commit -m &quot;mon commentaire&quot;</code></li>
 </ol>
 
 <p>On répète ces étapes à plusieurs reprises au cours de l&#39;écriture d&#39;un document et/ou de l&#39;avancé d&#39;un projet.</p>
+
+<p><strong>Qu&#39;est ce qu&#39;un bon commentaire?</strong></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -484,7 +485,7 @@ Date:   Wed Feb 28 20:33:20 2018 -0500
     <h1>Les serveurs Git distants</h1>
   </hgroup>
   <article data-timings="">
-    <p>Jusqu&#39;à présent nous avons travailler localement sur votre ordinateur. Il est cependant possible de synchroniser votre travail sur un serveur Git (dépots distants). Ce procédé présente deux avantages indéniables:</p>
+    <p>Jusqu&#39;à présent nous avons travaillé localement sur votre ordinateur. Il est cependant possible de synchroniser votre travail sur un serveur Git (dépots distants). Ce procédé présente deux avantages indéniables:</p>
 
 <ol>
 <li>Sauvegarder votre travail (Back-up)</li>
@@ -531,7 +532,7 @@ Date:   Wed Feb 28 20:33:20 2018 -0500
 <slide class="" id="slide-26" style="background:;">
   <!--  <a href="#slide-26"></a> -->
   <hgroup>
-    <h1>Cloner votre dépot distant sur le serveur Github</h1>
+    <h1>Envoyer votre dépôt local sur le serveur Github</h1>
   </hgroup>
   <article data-timings="">
     <pre><code class="bash">git remote add origin https://adresseVersVotreDepot.git
@@ -546,10 +547,10 @@ git remote -v
 <slide class="" id="slide-27" style="background:;">
   <!--  <a href="#slide-27"></a> -->
   <hgroup>
-    <h1>Envoyer votre depot local sur le serveur Github</h1>
+    <h1>Envoyer votre dépôt local sur le serveur Github</h1>
   </hgroup>
   <article data-timings="">
-    <p>On va maintenant envoyé les fichiers et l&#39;historique de modifications de ces derniers sur le serveur</p>
+    <p>On va maintenant envoyé les fichiers et l&#39;historique de modifications de ces derniers sur le serveur.</p>
 
 <pre><code class="bash">git push origin master
 # Le serveur va vous demander de vous authentifier avec vos accès GitHub
@@ -1173,13 +1174,13 @@ Research. PLoS Computational Biology. 9: e1003285</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Cloner votre dépot distant sur le serveur Github'>
+        data-slide=26 title='Envoyer votre dépôt local sur le serveur Github'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Envoyer votre depot local sur le serveur Github'>
+        data-slide=27 title='Envoyer votre dépôt local sur le serveur Github'>
          27
       </a>
     </li>
