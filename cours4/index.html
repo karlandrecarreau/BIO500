@@ -577,7 +577,7 @@ data.txt :
   Rscript script1.R
 </code></pre>
 
-<p>Ce fichier s&#39;appelle makefile (sans extension) et il est exécuté en inscrivant simplement la commande <code>make</code>.</p>
+<p>Ce fichier s&#39;appelle makefile (sans extension) et il est exécuté en inscrivant simplement la commande <code>make nomDeLaCible</code>.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -588,9 +588,9 @@ data.txt :
     <h1>Étape par étape</h1>
   </hgroup>
   <article data-timings="">
-    <p><code>Rscript script1.R</code> est une commande. On utilise cette syntaxe dans le terminal pour lancer directement R sans jamais avoir à l&#39;ouvrir. Les scripts seront détaillés plus ploin, mais notez qu&#39;ils doivent se conclurent par <code>quit()</code> pour s&#39;assurer de fermer toutes les séances de R.</p>
+    <p><code>Rscript</code> est un programme permettant d&#39;exécuter du code R sans passer par la console R. On peut utiliser le terminal pour appeler le programme <code>Rscript</code> et lui donner comme argument un script R: <code>Rscript script1.R</code></p>
 
-<p>Les commandes sont espacées par une <em>tabulation</em>. Prendre note que ce</p>
+<p>Les commandes sont espacées par une <em>tabulation</em> ou 8 espaces. Assurer vous que votre tabulation corresponds bien à 8 espaces.</p>
 
 <p>Ensemble, la cible, les dépendances et les actions constituent une règle. Cet exemple a donc 3 règles.</p>
 
@@ -604,7 +604,7 @@ data.txt :
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Ouvrez un nouveau document au moyen de Atom</li>
+<li>Ouvrez un nouveau document au moyen de atom</li>
 <li>Copiez les commandes de l&#39;exemple</li>
 <li>Sauvergardez le fichier, avec pour nom makefile</li>
 <li>Assurez vous de trouvez les 3 scripts dans le dépôt git</li>
@@ -692,7 +692,7 @@ dev.off()
   <article data-timings="">
     <p>La rédaction du makefile nous force à spécifier les différentes étapes de notre démarche, à identifier les entrées et les sorties de différentes instructions à l&#39;ordinateur. De cette façon, le makefile permet de documenter rigoureusement la démarche réalisée.</p>
 
-<p>Il s&#39;agit aussi d&#39;un aide-mémoire qui permet de se rappeler ces étapes.</p>
+<p>Il s&#39;agit aussi d&#39;un aide-mémoire qui permet de se rappeler des étapes.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -723,7 +723,7 @@ dev.off()
 
 <p>On obtient le message :</p>
 
-<pre><code class="bash">$ make : &#39;data.txt&#39; is up to date
+<pre><code class="bash">make : &#39;data.txt&#39; is up to date
 </code></pre>
 
   </article>
@@ -742,7 +742,7 @@ dev.off()
 
 <p>Dans ce cas-ci, on obtient le message :</p>
 
-<pre><code class="bash">$ make: Nothing to be done for &#39;script2.R&#39;
+<pre><code class="bash">make: Nothing to be done for &#39;script2.R&#39;
 </code></pre>
 
   </article>
@@ -772,15 +772,15 @@ dev.off()
     <h1>Nettoyage du dépôt en fin de script</h1>
   </hgroup>
   <article data-timings="">
-    <p>Il arrive que certains scripts génèrent des fichiers temporaires qui ne doivent pas être conservés inutilement. LaTeX par exemple génère plusieurs types de sorties qui peuvent être éliminées.</p>
+    <p>Il arrive que certains scripts génèrent des fichiers temporaires qui ne doivent pas être conservés inutilement.</p>
 
 <p>Dans l&#39;exemple précédent, on pourrait vouloir éliminer le modèle, qui n&#39;est finalement utilisé que pour réaliser la figure. On peut ainsi inscrire à la fin du makefile :</p>
 
 <pre><code class="bash">clean :
-  rm -f *Rdata
+  rm -f model.Rdata
 </code></pre>
 
-<p>Qui va éliminer à la toute fin l&#39;objet modèle. Notez qu&#39;il n&#39;y a pas de dépendance, ce qui indique que cette opération sera systématiquement exécutée.</p>
+<p><code>rm -f model.Rdata</code> va éliminer à la toute fin l&#39;objet R contenant le modèle intitulé <code>model.Rdata</code>. Notez ici qu&#39;il n&#39;y a pas de dépendance, ce qui indique que cette opération sera systématiquement exécutée.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -792,8 +792,6 @@ dev.off()
   </hgroup>
   <article data-timings="">
     <p>L&#39;ordre de présentation des dépendances est arbitraire. Elles ne seront pas nécessairement vérifiées dans l&#39;ordre présenté.</p>
-
-<p>Cependant, il faut faire bien attention que les règles soient bien structurées de manière à ce qu&#39;il n&#39;y ait pas une règle i qui requiert une dépendance produite à la règle i+1.</p>
 
 <p>Un truc est de schématiser les dépendances (des noeuds) et les actions (des flèches)</p>
 
@@ -836,7 +834,7 @@ dev.off()
     <ul>
 <li>Identifiez clairement vos questions de recherche</li>
 <li>Planifiez les requêtes à réaliser pour traiter les données</li>
-<li>Inclure les requêtes dans le makefile</li>
+<li>Incluez les requêtes dans le makefile</li>
 </ul>
 
   </article>
