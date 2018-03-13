@@ -68,7 +68,7 @@ Ses difficultées techniques:
 
 ---
 
-# Système de contrôle éxistants
+# Systèmes de contrôle éxistants
 
 ## Un exemple avec Dropbox
 
@@ -76,7 +76,7 @@ Ses difficultées techniques:
 
 ---
 
-# Système de contrôle éxistants
+# Systèmes de contrôle éxistants
 
 ## Un exemple MS Word
 
@@ -155,7 +155,7 @@ On modifie le ou les fichiers, on ajoute la modification à Git puis on met un c
 
 On répète ces étapes à plusieurs reprises au cours de l'écriture d'un document et/ou de l'avancé d'un projet.
 
-**Qu'est ce qu'un bon commentaire?**
+**Question**: Qu'est ce qu'un bon commentaire?
 
 ---
 
