@@ -1,5 +1,5 @@
 ---
-title       : "Séance 5: La visualisation des données"
+title       : "Séance 4: Les outils pour la reproductibilité"
 subtitle    : "BIO 500 - Méthodes en écologie computationnelle"
 author      : "Dominique Gravel & Steve Vissault"
 job         : "Laboratoire d'écologie intégrative"
@@ -20,934 +20,563 @@ assets      :
 
 # Séance 5
 
-- Ces diapositives sont disponibles en [version web](https://econumuds.github.io/BIO500/cours5/) et en [PDF](./assets/pdf/S5-BIO500.pdf).
+- Ces diapositives sont disponibles en [version web](https://econumuds.github.io/BIO500/cours4/) et en [PDF](./assets/pdf/S4-BIO500.pdf).
 - L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12189).
-- Vous trouverez du matériel supplémentaire dans le [cours](http://kevincazelles.fr/talks/assets/QCBSGraphsR/Rgraphics.html#4) de [Kevin Cazelles](http://kevincazelles.fr/) et [Nicolas Casajus](http://www.cen.ulaval.ca/membre.aspx?id=3945098&membre=ncasajus) lors d'un atelier de communication visuelle du CSBQ.
-- Certaines diapositives sont également extraites de la présentation de [David Taylor](http://dtdata.io/prm/intro_dataviz_csbq.pdf)
 
 --- .transition
 
-# Qu'est-ce qui fait une bonne figure ?
+# Les outils pour la reproductibilité
 
 ---
 
-# Trop d'information
+# Les étapes du travail d'un biologiste
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Pacala.png" width="70%"></img>
+<div style='text-align:center;'>
+<img src="./assets/img/flow_full_repro.png" width="100%"></img>
 </div>
+
+
+--- .transition
+
+# Git: Un système de controle de version
+
+---&twocol
+
+# Une situation courante
+
+*** =left
+
+## Une situation qui vous est familière:
+
+```bash
+MonTravailSession/
+  |___ data/
+        |___ data_01122018.csv
+        |___ data_011022018.csv
+  |___ rapportVeg_jean_v1_01012018.docx
+  |___ rapportVeg_juliette_v1_01012018.docx
+  |___ rapportVeg_rémi_v1_04012018.docx
+  |___ rapportVeg_rémi_v2_10012018.docx
+  |___ rapportFinal_20012018.docx
+```
+
+*** =right
+
+## le travail d'équipe
+
+Ses difficultées
+
+- Multi-utilisateurs
+- Garder une trace de l'historique de modifications **d'un ensemble de fichiers**.
+- Revenir aux versions précédentes
+- comparer des versions d'un fichier.
 
 ---
 
-# Non respect des normes graphiques
+# Système de controle éxistants
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Desjardins.png" width="70%"></img>
-</div>
+- Mettre une screenshot de Dropbox, et de Word pour tracker les versions.
 
 ---
 
-# Abus de symboles et de couleurs
+# Qu'est ce que Git?
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Boulangeat.png" width="100%"></img>
+C'est un système qui permet de suivre l'ajout et les modifications pour un ensemble de fichier. C'est le cahier de lab du programmeur.
+
+- Logiciel libre
+- Soutenu par une large communauté (12 millions d'utilisateurs dans le monde)
+- Par défault, Git est installé par défault sur les machines Linux et MacOSX
+- Il peut être installé sur Windows: [https://git-scm.com/download/win](https://git-scm.com/download/win)
+
+---
+
+# Qu'est ce que Git?
+
+Il présente l'avantage d'être extrement versatile mais le désavantage de fonctionner seulement avec les fichiers plein texte.
+
+**Question**: Qu'est ce qu'un fichier plein texte?
+
+<!-- TODO: Qu'est ce qu'un fichier plein texte? Est-ce que je peux faire du contrôle de version avec un document word -->
+
+---
+
+# Initialisation d'un dépôt Git
+
+Git suit les modifications à l'intérieur d'un dossier que l'on appelle dépôt (`repository`). Pour initialiser le suivi d'un répertoire (initialiser un dépôt), il vous suffit d'utiliser la commande `git init`.
+
+```bash
+mkdir ~/Documents/travail_BIO500 # Créer un répertoire de travail dans le répertoire Documents.
+cd  ~/Documents/travail_BIO500 # Se déplacer vers ce répertoire
+git init # Initialiser le suivi de version de ce dossier.
+ls -la # Lister le contenu du répertoire de travail.
+```
+
+Le dossier `.git` permet de garder une trace de l'ensemble des opérations que vous allez faire dans ce répertoire.
+
+---
+
+# Exercice: Initialiser votre répertoire de travail avec git
+
+**À l'aide de votre terminal:**
+
+1. Créer un dossier (`mkdir`)
+2. Créer un fichier (`touch`)
+3. Initialiser votre dépot `git` (`git init`)
+4. Vérifier que le dossier caché (`.git`) se trouve dans votre nouveau répertoire
+
+---
+
+# Git en 3 étapes
+
+On modifie le ou les fichiers, on ajoute la modification à Git puis on met un commentaire sur la modification apportée.
+
+1. Modification d'un ou plusieurs fichiers sources
+2. `git add monFichier1.txt monFichier2.txt` - Ajout des fichiers modifiés
+3. `git commit -m "mon commentaire"` - Commentaire sur la modification apportée
+
+On répète ces étapes à plusieurs reprises au cours de l'écriture d'un document et/ou de l'avancé d'un projet.
+
+---
+
+# Git status
+
+Votre meilleur ami, `git status`, permet de prendre connaissance de l'état de notre dépôt Git.
+
+```bash
+Sur la branche master
+
+Validation initiale
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui
+  sera validé)
+
+
+        monFichier1.txt
+
+aucune modification ajoutée à la validation mais des
+fichiers non suivis sont présents (utilisez "git add" pour
+les suivre).
+```
+
+
+---
+
+# Exercice: Effectuer votre premier `commit`
+
+## Première partie
+
+1. Déplacer vous dans votre répertoire de travail
+2. Ajouter un fichier intituler `travail_BIO500.txt` et remplisser le de faux texte
+3. Effectuer un `git status`
+
+## Deuxième partie
+
+4. Ajouter ce fichier à votre dépot git (`git add`)
+5. Effectuer un `git status`
+6. Décrire la modification que vous venez d'apporter (`git commit`)
+
+À chaque `git status`, prenez le temps de regarder la sortie (message)
+
+---
+
+# Exercice: Effectuer votre premier `commit`
+
+## Troisième partie
+
+7. Modifier le fichier `travail_BIO500.txt`
+8. Ajouter la modification à votre dépot git (`git add`)
+9. Effectuer un `git status`
+
+À chaque `git status`, prenez le temps de regarder la sortie (message)
+
+## Quatrième partie
+
+7. Modifier à nouveau le fichier `travail_BIO500.txt`
+8. Effectuer un `git diff`
+
+
+
+--- &twocol
+
+# Quelques notions de base
+
+*** =left
+
+<div style='text-align:center;'>
+<img src="./assets/img/git_1.png" width="100%"></img>
 </div>
 
+*** =right
+
+- Une branche (`master` par défault): c'est un série de commentaires (`commit`)
+- Le dernier commentaire (`commit`) est ce que l'on appelle la tête de la brance (`HEAD`), elle contient la version la plus à jour des fichiers.
+- À chaque commentaires d'édition (`commit`) est attaché une version des fichiers.
+
+---
+
+# Le journal de Git
+
+```bash
+cd Documents/Git/BIO500 # Ceci est mon chemin d'accès
+git log
+```
+
+```bash
+commit 38d4a2700980b9c765f4abdb33e2f6b598aac4d5
+Author: Steve Vissault <s.vissault@yahoo.fr>
+Date:   Wed Feb 28 20:38:05 2018 -0500
+
+    Modifs sur plan de match
+
+commit 61601ff86e712d0a77ebd24c5277fe55fab9de6e
+Author: Steve Vissault <s.vissault@yahoo.fr>
+Date:   Wed Feb 28 20:33:20 2018 -0500
+
+    Modifications au cours3 (retrait slides), ajout reponses
+```
+
+--- &twocol
+
+# Le journal de Git
+
+*** =left
+
+```bash
+commit 38d4a2700980b9c765f4abdb33e2f6b598aac4d5
+Author: Steve Vissault <s.vissault@yahoo.fr>
+Date:   Wed Feb 28 20:38:05 2018 -0500
+
+    Modifs sur plan de match
+
+commit 61601ff86e712d0a77ebd24c5277fe55fab9de6e
+Author: Steve Vissault <s.vissault@yahoo.fr>
+Date:   Wed Feb 28 20:33:20 2018 -0500
+
+    Modifications au cours3 (retrait slides)
+```
+
+*** =right
+
+<div style='text-align:center;'>
+<img src="./assets/img/git_3.png" width="100%"></img>
+</div>
+
+
+--- &twocol
+
+# Se déplacer sur la branche `master`
+
+*** =left
+
+```bash
+git checkout numeroDeCommit
+```
+
+Permet de se déplacer vers un `commit` précis.
+
+*** =right
+
+<div style='text-align:center;'>
+<img src="./assets/img/git_3.png" width="100%"></img>
+</div>
+
+--- &twocol
+
+# Se déplacer sur la branche `master`
+
+*** =left
+
+```bash
+git checkout master
+```
+
+Permet de se déplacer vers un `commit` le plus récent.
+
+*** =right
+
+<div style='text-align:center;'>
+<img src="./assets/img/git_3.png" width="100%"></img>
+</div>
 
 ---.transition
 
-# L'art graphique
+# Le makefile
 
 ---
 
-# L'importance des graphiques
+# Les étapes du travail d'un biologiste
 
-<!-- La représentation visuelle de nos données est un **outil de persuasion** permettant d'illustrer nos résultats auprès du public et de nos pairs. Cet outil permet également de mieux comprendre les relations à l'intérieur de nos données par la visualisation. -->
-
-## La représentation visuelle des données permet de:
-
-- Synthétiser l'information.
-- Communiquer plus efficacement qu'un tableau.
-- Explorer nos données par la visualisation.
-- Présenter nos résultats et convaincre.
-
----
-
-# Explorer nos données par la visualisation
-
-## Voici un exemple illustrant l'importance de visualiser ses données:
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/table_visu.png" width="100%"></img>
+<div style='text-align:center;'>
+<img src="assets/img/flow_biometrie.png"  width="90%"></img>
 </div>
 
 ---
 
-# Explorer nos données par la visualisation
+# Qu'est-ce que le makefile ?
 
-## Voici un exemple illustrant l'importance de visualiser ses données:
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/plot_visu.png" height="450px"></img>
-</div>
-
---- &twocol
-
-# Communiquer par les graphiques
-
-*** =left
-
-- Les graphiques sont généralement **plus efficaces à communiquer** un message/un résultat qu'un tableau.
-
-- **Problème:** La représentation graphique peut parfois nous conduire à une **fausse interprétation**. L'idée est de transmettre une idée sans biaiser le lecteur.
-
-*** =right
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/fox.jpg" width="100%"></img>
-</div>
-
-<!-- - Problème: ratio 8/3 -->
-
---- &twocol
-
-# Communiquer par les graphiques
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/deformation.png" width="100%"></img>
-</div>
-
-
-<!-- - Problème: ratio 8/3 -->
-
+**Définition**: le makefile est un fichier qui contient un ensemble de directives qui sont exécutées par l'ordinateur. Les instructions et leurs dépendances sont spécifiées dans le makefile.
 
 ---
 
-# Communiquer par les graphiques
+# À quoi il sert ?
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Weisgerber_1.png" width="70%"></img>
-</div>
+Le makefile permet d'exécuter une série d'instructions, lorsqu'elles sont nécessaires. Les dépendances sont vérifiées et seulement les instructions qui requierent une mise à jour sont exécutées.
 
----
-
-# Communiquer par les graphiques
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Weisgerber2.png" width="70%"></img>
-</div>
-
-
----.transition
-
-# Règles et composantes graphiques
-
---- &twocol
-
-# Les composantes graphiques
-
-*** =left
-
-- Les axes et échelles.
-- Le titre de la figure.
-- La légende
-- Le [type de représentation des données](http://www.datavizcatalogue.com/).
-
-
-*** =right
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/viz.png" width="100%"></img>
-</div>
-
---- &twocol
-
-# Les règles graphiques
-
-*** =left
-
-- Une figure doit renvoyer un seul message/résultat.
-- Chaque élément d'une figure doit **aider à comprendre** ce message.
-- **Choisir le bon type de représentation** permet de mettre en valeur plus facilement ce qui doit être illustré.
-- **Attention aux normes graphiques**: Choix des couleurs, taille des caractères, épaisseur de la ligne, disposition des marges, cadrage etc.
-
-*** =right
-
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/viz.png" width="100%"></img>
-</div>
+Nous utiliserons le makefile pour assurer la reproductibilité de la démarche entreprise dans le cours. L'ensemble des instructions nécessaires à la production du rapport, de la création de la base de données à la compilation du document écrit, seront contenues dans le makefile.
 
 ---
 
-# Quelques conseils
+# Objectifs de la leçon
 
-- Ne pas **JAMAIS** utiliser de diagramme en pointe de tarte
+- Reconnaitre les parties importantes d'un makefile, les règles, les cibles, les dépendances et les actions
+- Écrire un makefile simple
+- Exécuter un makefile à partir du terminal
+- Préparer le makefile pour le projet de session
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/pies_vs_bars.png" width="80%"></img>
-</div>
+---
 
---- &twocol
+# Anatomie du makefile
 
-# Quelques conseils
+```bash
+<target>: <dependencies...>
+  <commands>
+```
 
-*** =left
+---
 
-- Éviter les figures 3D.
-- Limiter le nombre de dimensions (3 ou 4 dimensions max).
-- La multi-dimensionnalité peut être gérée en:
-  - Modifiant la forme et la la taille des points
-  - Ajoutant des couleurs
+# <target>
 
-*** =right
+La cible est habituellement le nom d'un fichier généré par la commande.
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/Pacala.png" height="350px"></img>
-</div>
+---
+
+# <dependencies...>
+
+Une dépendance (also appelée "prerequesite") est un fichier qui est utilisé pour créer la target.
+
+La target peut contenir plusieurs dépendances.
+
+Il est néanmoins possible d'avoir une commande qui ne requiert pas de dépendance
+
+---
+
+# <commands>
+
+La commande est l'action à réaliser. Dans notre cas, nous utiliserons une commande pour exécuter un script R comme :
+
+```bash
+$ Rscript script.R
+```
+
+Nous utiliserons également le langage de mise en forme LaTeX. Dans ce cas, la commande sera :
+
+```bash
+pdflatex manuscrit.tex
+```
+---
+
+# Un exemple
+
+```bash
+# Troisième étape, on produit une figure à partir du modèle
+# et des données
+figure.pdf: model.Rdata data.txt
+  Rscript script3.R
+
+# Seconde étape, on fait un modèle statistique à partir
+# de ces données
+model.Rdata: data.txt
+  Rscript script2.R
+
+# Première étape, on génère des données
+data.txt :
+  Rscript script1.R
+```
+
+Ce fichier s'appele makefile (sans extension) et il est exécuté en inscrivant simplement la commande make
+
+---
+
+# Étape par étape
+
+R CMD BATCH script1.R est une commande. On utiliser cette synthaxe pour lancer directement R sans jamais avoir à l'ouvrir. Les scripts seront détaillés plus ploin, mais notez qu'ils doivent se conclurent par quit() pour s'assurer de fermer toutes les séances de R.
+
+Les commandes sont espacées par un *tab*, et non pas 8 espaces. C'est l'héritage de la création de ce langage.
+
+Ensemble, la cible, les dépendances et les actions constituent une règle. Cet exemple a donc 3 règles.
+
+---
+
+# Comment créer un premier makefile
+
+- Ouvrez un nouveau document au moyen de Atom
+- Copiez les commandes de l'exemple
+- Sauvergardez le fichier, avec pour nom makefile
+- Assurez vous de trouvez les 3 scripts dans le dépôt git
+
+---
+
+# Script 1
 
 
---- &twocol
+```r
+  set.seed(1)
+  X <- runif(25, 0, 100)
+  Y <- rnorm(25, mean = X*2 + 10, sd = 25)
+  write.table(cbind(X,Y), file = "data.txt")
+```
+---
 
-# Quelques conseils
+#  Script 2
 
-- Limiter le ratio encre/données afin de faciliter la lecture.
 
-<div style='text-align:center;margin-top:10px;'>
-  <img src="assets/img/data2ink.jpg" width="100%"></img>
-</div>
+```r
+data <- read.table("~/Bureau/exemple/data.txt", header = T)
+model <- lm(data$Y ~ data$X)
+save(model, file = "~/Bureau/exemple/model.Rdata")
+```
 
+---
+
+#  Script 3
+
+
+```r
+data <- read.table("~/Bureau/exemple/data.txt", header = T)
+load("~/Bureau/exemple/model.Rdata")
+
+pdf("resultat.pdf", 7 5)
+plot(data$X, data$Y, xlab = "X", ylab = "Y")
+abline(model)
+dev.off()
+```
+
+---
+
+#  Exécuter un makefile
+
+  Il n'est pas nécessaire de nommer le makefile *makefile*. On peut toujours spécifier un autre nom et l'exécuter ainsi :
+
+
+```bash
+make -f MonMakefile
+```
+
+---
+
+# Les dépendances
+
+- Exécutez le makefile une première fois.
+- Ensuite, modifiez une valeur dans le fichier data.txt.
+- Exécutez le makefile à nouveau pour voir ce qui se produit.
+
+---
+
+# Le makefile comme outil de reproductiblité
+
+La rédaction du makefile nous force à spécifier les différentes étapes de notre démarche, à identifier les entrées et les sorties de différentes instructions à l'ordinateur. De cette façon, le makefile permet de documenter rigoureusement la démarche réalisée.
+
+Il s'agit aussi d'un aide-mémoire qui permet de se rappeler ces étapes.
+
+---
+
+# Exercice
+
+Conceptualisez les différentes étapes de la démarche du travail de session jusqu'à présent.
+
+Identifiez les entrées, les sorties et les actions.
+
+---
+
+# Les messages de make
+
+Il est possible de forcer make à réaliser certaines actions. Par exemple, si on exécute à nouveau make
+
+```bash
+make
+```
+
+On obtient le message :
+
+```bash
+$ make : 'data.txt' is up to date
+```
+
+---
+
+# Les messages de make
+
+On peut forcer une étape, par exemple le calcul du modèle, ainsi :
+
+```bash
+make model.Rdata
+```
+
+Dans ce cas-ci, on obtient le message :
+
+```bash
+$ make: Nothing to be done for 'script2.R'
+```
+
+---
+
+# Les messages de make
+
+*up to date* signifie que le makefile a une règle dont la cible est le nom du fichier et qu'il est à jour
+
+*Nothing to be done* indique que le fichier existe, mais que soit
+
+- il n'y a pas de règle pour ce fichier
+- il y a une règle, mais aucune action à réaliser
+
+---
+
+# Nettoyage du dépôt en fin de script
+
+Il arrive que certains scripts génèrent des fichiers temporaires qui ne doivent pas être conservés inutilement. LaTeX par exemple génère plusieurs types de sorties qui peuvent être éliminées.
+
+Dans l'exemple précédent, on pourrait vouloir éliminer le modèle, qui n'est finalement utilisé que pour réaliser la figure. On peut ainsi inscrire à la fin du makefile :
+
+```bash
+clean :
+  rm -f *Rdata
+```
+Qui va éliminer à la toute fin l'objet modèle. Notez qu'il n'y a pas de dépendance, ce qui indique que cette opération sera systématiquement exécutée.
+
+---
+
+# Dépendances
+
+L'ordre de présentation des dépendances est arbitraire. Elles ne seront pas nécessairement vérifiées dans l'ordre présenté.
+
+Cependant, il faut faire bien attention que les règles soient bien structurées de manière à ce qu'il n'y ait pas une règle i qui requiert une dépendance produite à la règle i+1.
+
+Un truc est de schématiser les dépendances (des noeuds) et les actions (des flèches)
+
+---
+
+# Autres ressources disponibles en ligne :
+
+https://swcarpentry.github.io/make-novice/02-makefiles/
+
+https://gist.github.com/isaacs/62a2d1825d04437c6f08
+
+http://gl.developpez.com/tutoriel/outil/makefile/
+
+http://icps.u-strasbg.fr/people/loechner/public_html/enseignement/GL/make.pdf
 
 --- .transition
 
-# Types de figures
-
----
-
-# Diagramme de dispersion (Scatter plot)
-
-<img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" height="550px" style="display: block; margin: auto;" />
-
----
-
-# Diagrammes à bâtons (Bar plot)
-
-<img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" height="550px" style="display: block; margin: auto;" />
-
----
-
-# Histogrammes
-
-<img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" height="550px" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Représentation 3-D
-
-<img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" height="550px" style="display: block; margin: auto;" />
-
----
-
-# Lignes de contour
-
-<img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" height="550px" style="display: block; margin: auto;" />
-
---- .transition
-
-# Faire une figure étape par étape avec R
-
----
-
-# Prépares les données adéquatement
-
-- Habituellement un `data.frame` ou `une matrice`
-- Une observation par ligne (format long)
-
---- &twocol
-
-# Ouvrir une fenêtre graphique
-
-*** =left
-
-```r
-dev.new(width = 10, height = 7)
-```
-
-*** =right
-
-
---- &twocol
-
-# Fixer certains paramètres
-
-
-```r
-# Fixer la largeur et la hauteur des marges
-par(mar = c(5,6,2,1))
-
-# Fixer le nombre de figures en colonnes et rangées
-par(mfrow = c(1,1))
-```
-
-*** =right
-
-
---- &twocol
-
-# Démarrer une figure avec `plot()`
-
-*** =left
-
-```r
-arbres <- read.csv2("donnees/arbres.csv")
-densite <- table(arbres[,c(3,5)])
-elevation <- as.numeric(row.names(densite))
-plot(elevation, densite[,1], axes = FALSE,
-      xlab = "Élévation", ylab = "Densité")
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Échelles logarithmiques
-
-*** =left
-
-```r
-plot(elevation, densite[,1], axes = FALSE,
-      xlab = "Élévation", ylab = "Densité",
-      log = "xy")
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Ajuster les tailles de caractères
-
-## Arguments `cex`, `cex.lab` et `cex.axis`
-
-*** =left
-
-```r
-plot(elevation, densite[,1], axes = FALSE,
-      xlab = "Élévation", ylab = "Densité",
-      cex.lab = 1.5, cex.axis = 1.25, cex = 1.5)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Modifier les axes
-
-*** =left
-
-```r
-axis(1, seq(0,1000,100))
-axis(2)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="100%" style="display: block; margin: auto;" />
-
---- &twocolw w1:55% w2:45%
-
-# Ajouter un titre
-
-*** =left
-
-```r
-title(main = "Densité au long du gradient d'élévation")
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Superposer des points d'une autre série de données
-
-*** =left
-
-```r
-points(elevation, densite[,3], pch = 19, cex = 1.5)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Superposer des lignes
-
-*** =left
-
-```r
-lines(elevation, densite[,1],lty = 1, lwd = 1.5)
-lines(elevation, densite[,3], lty  = 3, lwd = 1.5)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="100%" style="display: block; margin: auto;" />
-
---- &twocolw w1:40% w2:60%
-
-# Ajouter une ligne de tendance
-
-*** =left
-
-```r
-model = lm(densite[,3]~elevation)
-summary(model)
-abline(model, col = "darkred")
-```
-
-*** =right
-
-```
-## 
-## Call:
-## lm(formula = densite[, 3] ~ elevation)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -59.796 -26.743  -3.565  24.050  92.175 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 148.10588   11.23433  13.183   <2e-16 ***
-## elevation    -0.16650    0.01976  -8.428    5e-11 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 40.32 on 48 degrees of freedom
-## Multiple R-squared:  0.5968,	Adjusted R-squared:  0.5884 
-## F-statistic: 71.04 on 1 and 48 DF,  p-value: 4.999e-11
-```
-
---- &twocol
-
-# Ajouter une ligne de tendance
-
-*** =left
-
-```r
-model = lm(densite[,3]~elevation)
-abline(model, col = "darkred")
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="100%" style="display: block; margin: auto;" />
-
-
---- &twocol
-
-# Ajouter une légende
-
-*** =left
-
-```r
-legend("top", bty = "n", pch = c(19,1), lty = 1,
-    legend = c("Érable à sucre", "Sapin baumier"),
-    cex = 1.5)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-29-1.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Ajouter du texte
-
-*** =left
-
-```r
-r2 <- round(summary(model)$r.squared, 2)
-text(x = 850, y = 25, paste("R2=",r2),
-    cex = 21.5)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="100%" style="display: block; margin: auto;" />
-
----
-
-# Pour plus d'information
-
-- `?plot`
-- `?par`
-- `?axis`
-- `?mtext`
-
-
---- .transition
-
-# Créer d'autres types de figure
-
---- &twocol
-
-# Diagramme de dispersion (Scatter plot)
-
-*** =left
-
-
-```r
-arbres  <- read.csv2("donnees/arbres.csv")
-densite <- table(arbres[,c(3,5)])
-elevation <- as.numeric(row.names(densite))
-plot(elevation, densite[,1], pch = 19,
-  xlab = "Elevation", ylab = "Densité")
-points(elevation, densite[,3])
-```
-
-*** =right
-
-<img src="assets/fig/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" height="500px" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Diagrammes à bâtons (Bar plot)
-
-*** =left
-
-```r
-arbres  <- read.csv2("donnees/arbres.csv")
-n_tot <- table(arbres$esp)
-barplot(n_tot)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-35-1.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" height="500px" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Histogrammes
-
-*** =left
-
-
-```r
-hist(densite[,3])
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" height="500px" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Représentation 3-D
-
-*** =left
-
-
-```r
-x <- 10*(1:nrow(volcano))
-y <- 10*(1:ncol(volcano))
-
-image(x, y, volcano,
-  col = terrain.colors(100), axes = FALSE)
-
-axis(1, at = seq(100, 800, by = 100))
-axis(2, at = seq(100, 600, by = 100))
-box()
-
-title(main = "Maunga Whau Volcano", font.main = 4)
-```
-
-*** =right
-
-<img src="assets/fig/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" height="500px" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Lignes de contour
-
-*** =left
-
-```r
-x <- 10*(1:nrow(volcano))
-y <- 10*(1:ncol(volcano))
-
-image(x, y, volcano,
-  col = terrain.colors(100), axes = FALSE)
-
-axis(1, at = seq(100, 800, by = 100))
-axis(2, at = seq(100, 600, by = 100))
-box()
-
-title(main = "Maunga Whau Volcano", font.main = 4)
-
-contour(x, y, volcano,
-  levels = seq(90, 200, by = 5),
-  add = TRUE, col = "black")
-```
-
-*** =right
-
-<img src="assets/fig/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" height="500px" style="display: block; margin: auto;" />
-
----
-
-# Enregistrer une figure
-
-
-
-```r
-dev.copy2pdf(file = "test.pdf")
-dev.copy2png(file = "test.png")
-dev.copy2eps(file = "test.eps")
-```
-
---- .transition
-
-# Exercice: faire une représentation visuelle de la distribution de degrés
-
---- .transition
-
-# La visualisation de réseau avec igraph
-
----
-
-# Installation
-
-
-```r
-install.packages("igraph")
-```
-
-```
-## Installing package into '/home/travis/R/Library'
-## (as 'lib' is unspecified)
-```
-
-```r
-library(igraph)
-```
-
-```
-## 
-## Attaching package: 'igraph'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     decompose, spectrum
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     union
-```
-
----
-
-# Transformer une matrice d'adjacence en objet `igraph`
-
-
-```r
-library(igraph)
-C <- 0.1
-S <- 15
-L <- matrix(0, nr = S, nc = S)
-L[runif(S*S) < C] = 1
-sum(L)
-```
-
-```
-## [1] 26
-```
-
-```r
-g <- graph.adjacency(L)
-```
-
---- &twocol
-
-# Utiliser la fonction `plot` pour faire une représentation d'un réseau
-
-*** =left
-
-```r
-plot(g)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Version moins moche dans les paramètres par défaut
-
-*** =left
-
-```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="100%" style="display: block; margin: auto;" />
-
-
---- .transition
-
-# Exercice : Compiler la matrice d'adjacence et faire une première représentation du réseau avec `igraph`
-
---- &twocol
-
-# Changer la couleur des noeuds
-
-*** =left
-
-```r
-# Calculer le degré
-deg <- apply(L, 2, sum) + apply(L, 1, sum)
-
-# Le rang pour chaque noeud
-rk <- rank(deg)
-
-# Faire un code de couleur
-col.vec <- heat.colors(S)
-
-# Attribuer aux noeuds la couleur
-V(g)$color = col.vec[rk]
-
-# Refaire la figure
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Changer la taille des noeuds
-
-*** =left
-
-```r
-# Faire un code de ctaille
-col.vec <- seq(10, 25, length.out = S)
-
-# Attribuer aux noeuds la couleur
-V(g)$size = col.vec[rk]
-
-# Refaire la figure
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA)
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Changer la disposition des noeuds
-
-*** =left
-
-```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA, layout = layout.reingold.tilford(g))
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Changer la disposition des noeuds
-
-*** =left
-
-```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA, layout = layout.circle(g))
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" width="100%" style="display: block; margin: auto;" />
-
---- &twocol
-
-# Changer la disposition des noeuds
-
-*** =left
-
-```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA, layout = layout.kamada.kawai(g))
-```
-
-*** =right
-<img src="assets/fig/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" width="100%" style="display: block; margin: auto;" />
-
----
-
-# Calcul de propriétés
-
-## La modularité
-
-
-```r
-wtc = walktrap.community(g)
-modularity(wtc)
-```
-
-```
-## [1] 0.3121302
-```
-
----
-
-# Calcul de propriétés
-
-## La distance entre les noeuds
-
-
-```r
-distances(g)
-```
-
-```
-##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]    0    3  Inf    2    2    1    2    1    1     2     2     3     1
-##  [2,]    3    0  Inf    2    3    3    2    3    2     1     1     2     4
-##  [3,]  Inf  Inf    0  Inf  Inf  Inf  Inf  Inf  Inf   Inf   Inf   Inf   Inf
-##  [4,]    2    2  Inf    0    2    2    2    1    2     3     1     2     3
-##  [5,]    2    3  Inf    2    0    1    2    1    3     2     2     1     3
-##  [6,]    1    3  Inf    2    1    0    2    1    2     2     3     2     2
-##  [7,]    2    2  Inf    2    2    2    0    1    2     1     3     3     3
-##  [8,]    1    3  Inf    1    1    1    1    0    2     2     2     2     2
-##  [9,]    1    2  Inf    2    3    2    2    2    0     1     1     2     2
-## [10,]    2    1  Inf    3    2    2    1    2    1     0     2     3     3
-## [11,]    2    1  Inf    1    2    3    3    2    1     2     0     1     3
-## [12,]    3    2  Inf    2    1    2    3    2    2     3     1     0     4
-## [13,]    1    4  Inf    3    3    2    3    2    2     3     3     4     0
-## [14,]    2    2  Inf    3    2    1    1    2    2     1     3     3     3
-## [15,]    3    2  Inf    3    1    2    2    2    2     1     3     2     4
-##       [,14] [,15]
-##  [1,]     2     3
-##  [2,]     2     2
-##  [3,]   Inf   Inf
-##  [4,]     3     3
-##  [5,]     2     1
-##  [6,]     1     2
-##  [7,]     1     2
-##  [8,]     2     2
-##  [9,]     2     2
-## [10,]     1     1
-## [11,]     3     3
-## [12,]     3     2
-## [13,]     3     4
-## [14,]     0     1
-## [15,]     1     0
-```
-
----
-
-# Calcul de propriétés
-
-## La centralité des noeuds
-
-
-```r
-eigen_centrality(g)$vector
-```
-
-```
-##  [1] 7.042745e-01 3.559471e-01 5.933369e-17 2.969227e-01 6.293763e-01
-##  [6] 7.323360e-01 6.470997e-01 7.689539e-01 5.358650e-01 1.000000e+00
-## [11] 3.933267e-01 3.509112e-01 3.598359e-01 7.640666e-01 6.114424e-01
-```
-
---- .transition
-
-# Exporter des tableaux
-
----
-
-# Exporter des tableaux
-
-Exporter des tableaux depuis R vers son document de travail peut être difficile.
-
-## La procédure habituelle serait:
-
-1. Enregistrer le `data.frame` dans un fichier avec la fonction `write.table()` ou `write.csv()`
-2. Éditer et faire la mise en page dans MS Excel ou MS Word.
-
-Le package `knitr` permet de faciliter cette procédure en exportant le `data.frame` directement dans son document de travail LaTeX.
-
----
-
-# Exporter des tableaux
-
-Prenons le jeu de données `iris` directement disponible sous R.
-
-
-```r
-data(iris)
-class(iris)
-```
-
-```
-## [1] "data.frame"
-```
-
-```r
-head(iris)
-```
-
-```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
-```
-
----
-
-# Exporter des tableaux
-
-Je souhaite maintenant exporter ce `data.frame` en LateX (un format que nous verrons lors de la prochaine séance):
-
-
-```r
-library(knitr)
-iris_tex <- kable(iris,format="latex")
-writeLines(iris_tex, con = "./donnees/iris.tex", sep = "\n", useBytes = FALSE)
-```
-
---- .transition
-
-# Travail # 2
+# Travail pour la semaine
 
 ---
 
 # Consignes
 
-- Identifier clairement vos questions de recherche
-- Illustrer le réseau de collaborations
-- Compléter votre analyse au moyen de 3 figures et 1 tableau
-
----
-
-# Évaluation
-
-- Clareté des questions et adéquation des figures et du tableau
-- Efficacité de la présentation
-- Respect de normes graphiques
-- Originalité
+- Identifiez clairement vos questions de recherche
+- Planifiez les requêtes à réaliser pour traiter les données
+- Inclure les requêtes dans le makefile
 
 ---
 
