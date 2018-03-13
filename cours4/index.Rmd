@@ -270,7 +270,7 @@ Date:   Wed Feb 28 20:33:20 2018 -0500
 *** =left
 
 ```bash
-git checkout numeroDeCommit
+git checkout 4abdb33e2f6b598aac4d5
 ```
 
 Permet de se déplacer vers un `commit` précis.
@@ -308,7 +308,7 @@ Permet de se déplacer vers un `commit` le plus récent.
 # Les étapes du travail d'un biologiste
 
 <div style='text-align:center;'>
-<img src="assets/img/flow_biometrie.png"  width="90%"></img>
+<img src="assets/img/flow_full_repro.png"  width="90%"></img>
 </div>
 
 ---
@@ -321,7 +321,7 @@ Permet de se déplacer vers un `commit` le plus récent.
 
 # À quoi il sert ?
 
-Le makefile permet d'exécuter une série d'instructions, lorsqu'elles sont nécessaires. Les dépendances sont vérifiées et seulement les instructions qui requierent une mise à jour sont exécutées.
+Le makefile est un logiciel permettant d'exécuter une série d'instructions, lorsqu'elles sont nécessaires. Les dépendances sont vérifiées et seulement les instructions qui requierent une mise à jour sont exécutées.
 
 Nous utiliserons le makefile pour assurer la reproductibilité de la démarche entreprise dans le cours. L'ensemble des instructions nécessaires à la production du rapport, de la création de la base de données à la compilation du document écrit, seront contenues dans le makefile.
 
@@ -345,35 +345,36 @@ Nous utiliserons le makefile pour assurer la reproductibilité de la démarche e
 
 ---
 
-# <target>
+# `target`
 
 La cible est habituellement le nom d'un fichier généré par la commande.
 
 ---
 
-# <dependencies...>
+# `dependencies...`
 
-Une dépendance (also appelée "prerequesite") est un fichier qui est utilisé pour créer la target.
+Une dépendance (également appelée _"prerequesite"_) est un fichier qui est utilisé pour créer un autre fichier appelée cible (`"target"`).
 
-La target peut contenir plusieurs dépendances.
+La _target_ peut contenir plusieurs dépendances.
 
-Il est néanmoins possible d'avoir une commande qui ne requiert pas de dépendance
+Il est néanmoins possible d'avoir un fichier cible qui ne requiert pas de dépendance.
 
 ---
 
-# <commands>
+# `commands`
 
 La commande est l'action à réaliser. Dans notre cas, nous utiliserons une commande pour exécuter un script R comme :
 
 ```bash
-$ Rscript script.R
+Rscript script.R
 ```
 
-Nous utiliserons également le langage de mise en forme LaTeX. Dans ce cas, la commande sera :
+Nous verrons plus tard dans la session le langage de mise en forme LaTeX. Dans ce cas, la commande serit:
 
 ```bash
 pdflatex manuscrit.tex
 ```
+
 ---
 
 # Un exemple
@@ -394,15 +395,15 @@ data.txt :
   Rscript script1.R
 ```
 
-Ce fichier s'appele makefile (sans extension) et il est exécuté en inscrivant simplement la commande make
+Ce fichier s'appelle makefile (sans extension) et il est exécuté en inscrivant simplement la commande `make`.
 
 ---
 
 # Étape par étape
 
-R CMD BATCH script1.R est une commande. On utiliser cette synthaxe pour lancer directement R sans jamais avoir à l'ouvrir. Les scripts seront détaillés plus ploin, mais notez qu'ils doivent se conclurent par quit() pour s'assurer de fermer toutes les séances de R.
+`Rscript script1.R` est une commande. On utilise cette syntaxe dans le terminal pour lancer directement R sans jamais avoir à l'ouvrir. Les scripts seront détaillés plus ploin, mais notez qu'ils doivent se conclurent par `quit()` pour s'assurer de fermer toutes les séances de R.
 
-Les commandes sont espacées par un *tab*, et non pas 8 espaces. C'est l'héritage de la création de ce langage.
+Les commandes sont espacées par une *tabulation*. Prendre note que ce
 
 Ensemble, la cible, les dépendances et les actions constituent une règle. Cet exemple a donc 3 règles.
 
