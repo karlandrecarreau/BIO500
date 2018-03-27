@@ -80,27 +80,7 @@ plot(elevation, densite[,1], axes = FALSE,
 ```
 
 *** =right
-
-```
-## Warning in file(file, "rt"): cannot open file 'donnees/arbres.csv': No such
-## file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```
-## Error in table(arbres[, c(3, 5)]): object 'arbres' not found
-```
-
-```
-## Error in row.names(densite): object 'densite' not found
-```
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -115,10 +95,7 @@ plot(elevation, densite[,1], axes = FALSE,
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -135,10 +112,7 @@ plot(elevation, densite[,1], axes = FALSE,
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -152,18 +126,7 @@ axis(2)
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
+<img src="assets/fig/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="100%" style="display: block; margin: auto;" />
 
 --- &twocolw w1:55% w2:45%
 
@@ -176,22 +139,7 @@ title(main = "Densité au long du gradient d'élévation")
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
+<img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -204,26 +152,7 @@ points(elevation, densite[,3], pch = 19, cex = 1.5)
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
-
-```
-## Error in points(elevation, densite[, 3], pch = 19, cex = 1.5): object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -237,34 +166,7 @@ lines(elevation, densite[,3], lty  = 3, lwd = 1.5)
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
-
-```
-## Error in points(elevation, densite[, 3], pch = 19, cex = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 1], lty = 1, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 3], lty = 3, lwd = 1.5): object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="100%" style="display: block; margin: auto;" />
 
 --- &twocolw w1:40% w2:60%
 
@@ -281,11 +183,24 @@ abline(model, col = "darkred")
 *** =right
 
 ```
-## Error in eval(predvars, data, env): object 'densite' not found
-```
-
-```
-## Error in summary(model): object 'model' not found
+## 
+## Call:
+## lm(formula = densite[, 3] ~ elevation)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -59.796 -26.743  -3.565  24.050  92.175 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 148.10588   11.23433  13.183   <2e-16 ***
+## elevation    -0.16650    0.01976  -8.428    5e-11 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 40.32 on 48 degrees of freedom
+## Multiple R-squared:  0.5968,	Adjusted R-squared:  0.5884 
+## F-statistic: 71.04 on 1 and 48 DF,  p-value: 4.999e-11
 ```
 
 --- &twocol
@@ -300,42 +215,7 @@ abline(model, col = "darkred")
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
-
-```
-## Error in points(elevation, densite[, 3], pch = 19, cex = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 1], lty = 1, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 3], lty = 3, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in eval(predvars, data, env): object 'densite' not found
-```
-
-```
-## Error in abline(model, col = "darkred"): object 'model' not found
-```
+<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="100%" style="display: block; margin: auto;" />
 
 
 --- &twocol
@@ -351,38 +231,7 @@ legend("top", bty = "n", pch = c(19,1), lty = 1,
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
-
-```
-## Error in points(elevation, densite[, 3], pch = 19, cex = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 1], lty = 1, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 3], lty = 3, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in strwidth(legend, units = "user", cex = cex, font = text.font): plot.new has not been called yet
-```
+<img src="assets/fig/unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="100%" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -397,46 +246,7 @@ text(x = 850, y = 25, paste("R2=",r2),
 ```
 
 *** =right
-
-```
-## Error in plot(elevation, densite[, 1], axes = FALSE, xlab = "Élévation", : object 'elevation' not found
-```
-
-```
-## Error in axis(1, seq(0, 1000, 100)): plot.new has not been called yet
-```
-
-```
-## Error in axis(2): plot.new has not been called yet
-```
-
-```
-## Error in title(main = "Densité au long du gradient d'élévation"): plot.new has not been called yet
-```
-
-```
-## Error in points(elevation, densite[, 3], pch = 19, cex = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 1], lty = 1, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in lines(elevation, densite[, 3], lty = 3, lwd = 1.5): object 'elevation' not found
-```
-
-```
-## Error in strwidth(legend, units = "user", cex = cex, font = text.font): plot.new has not been called yet
-```
-
-```
-## Error in summary(model): object 'model' not found
-```
-
-```
-## Error in paste("R2=", r2): object 'r2' not found
-```
+<img src="assets/fig/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="100%" style="display: block; margin: auto;" />
 
 ---
 
@@ -469,31 +279,7 @@ points(elevation, densite[,3])
 
 *** =right
 
-
-```
-## Warning in file(file, "rt"): cannot open file 'donnees/arbres.csv': No such
-## file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```
-## Error in table(arbres[, c(3, 5)]): object 'arbres' not found
-```
-
-```
-## Error in row.names(densite): object 'densite' not found
-```
-
-```
-## Error in plot(elevation, densite[, 1], pch = 19, xlab = "Elevation", ylab = "Densité"): object 'elevation' not found
-```
-
-```
-## Error in points(elevation, densite[, 3]): object 'elevation' not found
-```
+<img src="assets/fig/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" height="500px" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -508,23 +294,7 @@ barplot(n_tot)
 ```
 
 *** =right
-
-```
-## Warning in file(file, "rt"): cannot open file 'donnees/arbres.csv': No such
-## file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```
-## Error in table(arbres$esp): object 'arbres' not found
-```
-
-```
-## Error in barplot(n_tot): object 'n_tot' not found
-```
+<img src="assets/fig/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" height="500px" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -538,10 +308,7 @@ hist(densite[,3])
 ```
 
 *** =right
-
-```
-## Error in hist(densite[, 3]): object 'densite' not found
-```
+<img src="assets/fig/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" height="500px" style="display: block; margin: auto;" />
 
 --- &twocol
 
@@ -666,7 +433,7 @@ sum(L)
 ```
 
 ```
-## [1] 20
+## [1] 26
 ```
 
 ```r
@@ -810,7 +577,7 @@ modularity(wtc)
 ```
 
 ```
-## [1] 0.36875
+## [1] 0.1856509
 ```
 
 ---
@@ -826,37 +593,37 @@ distances(g)
 
 ```
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]    0    3    5    4    4    6    3    5    2     4     1     5     4
-##  [2,]    3    0    6    5    5    7    4    6    1     5     2     6     5
-##  [3,]    5    6    0    3    3    2    2    2    5     3     4     1     1
-##  [4,]    4    5    3    0    2    2    1    1    4     2     3     3     2
-##  [5,]    4    5    3    2    0    2    1    1    4     2     3     3     2
-##  [6,]    6    7    2    2    2    0    3    1    6     4     5     1     2
-##  [7,]    3    4    2    1    1    3    0    2    3     1     2     2     1
-##  [8,]    5    6    2    1    1    1    2    0    5     3     4     2     1
-##  [9,]    2    1    5    4    4    6    3    5    0     4     1     5     4
-## [10,]    4    5    3    2    2    4    1    3    4     0     3     3     2
-## [11,]    1    2    4    3    3    5    2    4    1     3     0     4     3
-## [12,]    5    6    1    3    3    1    2    2    5     3     4     0     1
-## [13,]    4    5    1    2    2    2    1    1    4     2     3     1     0
-## [14,]    2    3    3    2    2    4    1    3    2     2     1     3     2
-## [15,]    1    4    6    5    5    7    4    6    3     5     2     6     5
+##  [1,]    0    2    1    1    3    2    2    2    1     3     2     1     1
+##  [2,]    2    0    3    1    2    2    1    4    2     2     3     3     3
+##  [3,]    1    3    0    2    4    3    3    3    2     4     3     2     2
+##  [4,]    1    1    2    0    2    2    1    3    1     2     2     2     2
+##  [5,]    3    2    4    2    0    2    1    4    3     2     4     3     3
+##  [6,]    2    2    3    2    2    0    1    2    3     2     4     2     1
+##  [7,]    2    1    3    1    1    1    0    3    2     1     3     2     2
+##  [8,]    2    4    3    3    4    2    3    0    3     4     4     1     1
+##  [9,]    1    2    2    1    3    3    2    3    0     3     1     2     2
+## [10,]    3    2    4    2    2    2    1    4    3     0     4     3     3
+## [11,]    2    3    3    2    4    4    3    4    1     4     0     3     3
+## [12,]    1    3    2    2    3    2    2    1    2     3     3     0     1
+## [13,]    1    3    2    2    3    1    2    1    2     3     3     1     0
+## [14,]    1    2    2    2    2    2    1    2    2     2     3     1     2
+## [15,]    1    1    2    2    3    3    2    3    2     3     3     2     2
 ##       [,14] [,15]
-##  [1,]     2     1
-##  [2,]     3     4
-##  [3,]     3     6
-##  [4,]     2     5
-##  [5,]     2     5
-##  [6,]     4     7
-##  [7,]     1     4
-##  [8,]     3     6
-##  [9,]     2     3
-## [10,]     2     5
-## [11,]     1     2
-## [12,]     3     6
-## [13,]     2     5
-## [14,]     0     3
-## [15,]     3     0
+##  [1,]     1     1
+##  [2,]     2     1
+##  [3,]     2     2
+##  [4,]     2     2
+##  [5,]     2     3
+##  [6,]     2     3
+##  [7,]     1     2
+##  [8,]     2     3
+##  [9,]     2     2
+## [10,]     2     3
+## [11,]     3     3
+## [12,]     1     2
+## [13,]     2     2
+## [14,]     0     2
+## [15,]     2     0
 ```
 
 ---
@@ -871,9 +638,9 @@ eigen_centrality(g)$vector
 ```
 
 ```
-##  [1] 0.031256971 0.009208911 0.365343991 0.532405528 0.827024940
-##  [6] 0.431165264 0.807095893 1.000000000 0.031256971 0.337103290
-## [11] 0.096883798 0.463465226 0.776588812 0.266329965 0.009208911
+##  [1] 1.0000000 0.5084329 0.3009694 0.5862518 0.1460389 0.2731127 0.6312672
+##  [8] 0.3100988 0.3944302 0.1460389 0.1187114 0.7911433 0.5492889 0.5604062
+## [15] 0.3489645
 ```
 
 --- .transition
@@ -934,15 +701,6 @@ Je souhaite maintenant exporter ce `data.frame` en LateX (un format que nous ver
 library(knitr)
 iris_tex <- kable(iris,format="latex")
 writeLines(iris_tex, con = "./donnees/iris.tex", sep = "\n", useBytes = FALSE)
-```
-
-```
-## Warning in file(con, "w"): cannot open file './donnees/iris.tex': No such
-## file or directory
-```
-
-```
-## Error in file(con, "w"): cannot open the connection
 ```
 
 --- .transition
