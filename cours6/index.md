@@ -390,12 +390,13 @@ dev.copy2eps(file = "test.eps")
 
 ```r
 install.packages("igraph")
+library(igraph)
 ```
 
-```
-## Installing package into '/home/travis/R/Library'
-## (as 'lib' is unspecified)
-```
+---
+
+# Transformer une matrice d'adjacence en objet `igraph`
+
 
 ```r
 library(igraph)
@@ -418,13 +419,7 @@ library(igraph)
 ##     union
 ```
 
----
-
-# Transformer une matrice d'adjacence en objet `igraph`
-
-
 ```r
-library(igraph)
 C <- 0.1
 S <- 15
 L <- matrix(0, nr = S, nc = S)
@@ -433,7 +428,7 @@ sum(L)
 ```
 
 ```
-## [1] 18
+## [1] 23
 ```
 
 ```r
@@ -460,7 +455,7 @@ plot(g)
 *** =left
 
 ```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
     vertex.frame.color = NA)
 ```
 
@@ -492,7 +487,7 @@ col.vec <- heat.colors(S)
 V(g)$color = col.vec[rk]
 
 # Refaire la figure
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
     vertex.frame.color = NA)
 ```
 
@@ -513,7 +508,7 @@ col.vec <- seq(10, 25, length.out = S)
 V(g)$size = col.vec[rk]
 
 # Refaire la figure
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
     vertex.frame.color = NA)
 ```
 
@@ -527,7 +522,7 @@ plot(g, vertex.label=NA, edge.arrow.mode = 0,
 *** =left
 
 ```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
     vertex.frame.color = NA, layout = layout.reingold.tilford(g))
 ```
 
@@ -541,8 +536,8 @@ plot(g, vertex.label=NA, edge.arrow.mode = 0,
 *** =left
 
 ```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA,
     layout = layout.circle(g))
 ```
 
@@ -556,8 +551,8 @@ plot(g, vertex.label=NA, edge.arrow.mode = 0,
 *** =left
 
 ```r
-plot(g, vertex.label=NA, edge.arrow.mode = 0, 
-    vertex.frame.color = NA, 
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA,
     layout = layout.kamada.kawai(g))
 ```
 
@@ -577,7 +572,7 @@ modularity(wtc)
 ```
 
 ```
-## [1] 0.3966049
+## [1] 0.3431002
 ```
 
 ---
@@ -593,37 +588,37 @@ distances(g)
 
 ```
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]    0    3    3    1    3    1    3    2    1     3     2     2   Inf
-##  [2,]    3    0    4    3    1    4    4    3    2     2     1     3   Inf
-##  [3,]    3    4    0    2    4    4    2    3    2     2     3     1   Inf
-##  [4,]    1    3    2    0    3    2    2    2    1     2     2     1   Inf
-##  [5,]    3    1    4    3    0    4    4    3    2     2     1     3   Inf
-##  [6,]    1    4    4    2    4    0    4    2    2     4     3     3   Inf
-##  [7,]    3    4    2    2    4    4    0    3    2     2     3     1   Inf
-##  [8,]    2    3    3    2    3    2    3    0    1     3     2     2   Inf
-##  [9,]    1    2    2    1    2    2    2    1    0     2     1     1   Inf
-## [10,]    3    2    2    2    2    4    2    3    2     0     1     1   Inf
-## [11,]    2    1    3    2    1    3    3    2    1     1     0     2   Inf
-## [12,]    2    3    1    1    3    3    1    2    1     1     2     0   Inf
-## [13,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf   Inf   Inf   Inf     0
-## [14,]    2    4    4    3    4    1    4    1    2     4     3     3   Inf
-## [15,]    1    4    4    2    4    2    4    3    2     4     3     3   Inf
+##  [1,]    0    1    2    3    2    2    2    2    2     1     2     1     1
+##  [2,]    1    0    3    4    3    3    3    1    3     2     3     2     2
+##  [3,]    2    3    0    3    2    2    2    4    1     1     1     1     1
+##  [4,]    3    4    3    0    3    1    3    5    4     2     4     3     4
+##  [5,]    2    3    2    3    0    2    2    4    3     1     1     3     2
+##  [6,]    2    3    2    1    2    0    2    4    3     1     3     2     3
+##  [7,]    2    3    2    3    2    2    0    4    3     1     3     3     3
+##  [8,]    2    1    4    5    4    4    4    0    4     3     4     3     3
+##  [9,]    2    3    1    4    3    3    3    4    0     2     2     1     2
+## [10,]    1    2    1    2    1    1    1    3    2     0     2     2     2
+## [11,]    2    3    1    4    1    3    3    4    2     2     0     2     1
+## [12,]    1    2    1    3    3    2    3    3    1     2     2     0     2
+## [13,]    1    2    1    4    2    3    3    3    2     2     1     2     0
+## [14,]    2    3    2    2    3    1    3    4    2     2     3     1     3
+## [15,]    2    1    4    5    4    4    4    2    4     3     4     3     3
 ##       [,14] [,15]
-##  [1,]     2     1
-##  [2,]     4     4
-##  [3,]     4     4
-##  [4,]     3     2
-##  [5,]     4     4
-##  [6,]     1     2
-##  [7,]     4     4
-##  [8,]     1     3
-##  [9,]     2     2
-## [10,]     4     4
-## [11,]     3     3
-## [12,]     3     3
-## [13,]   Inf   Inf
-## [14,]     0     3
-## [15,]     3     0
+##  [1,]     2     2
+##  [2,]     3     1
+##  [3,]     2     4
+##  [4,]     2     5
+##  [5,]     3     4
+##  [6,]     1     4
+##  [7,]     3     4
+##  [8,]     4     2
+##  [9,]     2     4
+## [10,]     2     3
+## [11,]     3     4
+## [12,]     1     3
+## [13,]     3     3
+## [14,]     0     4
+## [15,]     4     0
 ```
 
 ---
@@ -638,9 +633,9 @@ eigen_centrality(g)$vector
 ```
 
 ```
-##  [1] 0.6903411 0.2665018 0.2552152 0.7726840 0.2665018 0.2710183 0.2552152
-##  [8] 0.3658150 1.0000000 0.4401321 0.6040415 0.8336750 0.0000000 0.1949556
-## [15] 0.2113360
+##  [1] 0.7990911 0.4076986 1.0000000 0.2714694 0.4232156 0.6860168 0.2542222
+##  [8] 0.1155919 0.5202660 0.8966545 0.5960484 0.8350045 0.6790772 0.6257461
+## [15] 0.1155919
 ```
 
 --- .transition
@@ -725,7 +720,8 @@ writeLines(iris_tex, con = "./donnees/iris.tex", sep = "\n", useBytes = FALSE)
 - Respect de normes graphiques
 - Originalité
 
------- .transition
+---
+--- .transition
 
 # Essai
 
