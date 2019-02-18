@@ -495,11 +495,11 @@ head(acteurs_films,4)
 ```
 
 ```
-##                     titre annee id_film id_film
-## 1        'Breaker' Morant  1980       4       4
-## 2             'burbs, The  1989       5       5
-## 3   'Crocodile' Dundee II  1988       6       6
-## 4 *batteries not included  1987       7       7
+##                     titre annee id_film id_film..4
+## 1        'Breaker' Morant  1980       4          4
+## 2             'burbs, The  1989       5          5
+## 3   'Crocodile' Dundee II  1988       6          6
+## 4 *batteries not included  1987       7          7
 ```
 
 ---
