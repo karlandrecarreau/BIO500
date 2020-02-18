@@ -644,7 +644,7 @@ sum(L)
 ```
 
 ```
-## [1] 26
+## [1] 23
 ```
 
 ```r
@@ -788,7 +788,7 @@ modularity(wtc)
 ```
 
 ```
-## [1] 0.227071
+## [1] 0.3175803
 ```
 
 ---
@@ -805,37 +805,37 @@ distances(g)
 
 ```
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,]    0    3    2    1    2    1    2    3    4   Inf     1     3     2
-##  [2,]    3    0    1    4    2    2    2    2    3   Inf     2     2     2
-##  [3,]    2    1    0    3    2    1    1    3    2   Inf     1     1     2
-##  [4,]    1    4    3    0    3    2    3    4    5   Inf     2     4     3
-##  [5,]    2    2    2    3    0    2    3    2    4   Inf     1     3     2
-##  [6,]    1    2    1    2    2    0    1    2    3   Inf     2     2     1
-##  [7,]    2    2    1    3    3    1    0    3    2   Inf     2     1     2
-##  [8,]    3    2    3    4    2    2    3    0    5   Inf     2     4     2
-##  [9,]    4    3    2    5    4    3    2    5    0   Inf     3     1     4
-## [10,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf     0   Inf   Inf   Inf
-## [11,]    1    2    1    2    1    2    2    2    3   Inf     0     2     2
-## [12,]    3    2    1    4    3    2    1    4    1   Inf     2     0     3
-## [13,]    2    2    2    3    2    1    2    2    4   Inf     2     3     0
-## [14,]    3    2    1    4    1    2    2    3    3   Inf     2     2     3
-## [15,]    2    1    2    3    1    1    2    1    4   Inf     1     3     1
+##  [1,]    0    3    3    2    3    2  Inf    3    3     1     2     3     2
+##  [2,]    3    0    2    1    4    3  Inf    2    1     2     3     2     2
+##  [3,]    3    2    0    1    4    3  Inf    2    2     2     3     2     1
+##  [4,]    2    1    1    0    3    2  Inf    1    1     1     2     1     2
+##  [5,]    3    4    4    3    0    1  Inf    4    4     2     3     4     3
+##  [6,]    2    3    3    2    1    0  Inf    3    3     1     2     3     2
+##  [7,]  Inf  Inf  Inf  Inf  Inf  Inf    0  Inf  Inf   Inf   Inf   Inf   Inf
+##  [8,]    3    2    2    1    4    3  Inf    0    2     2     2     2     1
+##  [9,]    3    1    2    1    4    3  Inf    2    0     2     3     2     1
+## [10,]    1    2    2    1    2    1  Inf    2    2     0     1     2     1
+## [11,]    2    3    3    2    3    2  Inf    2    3     1     0     1     2
+## [12,]    3    2    2    1    4    3  Inf    2    2     2     1     0     3
+## [13,]    2    2    1    2    3    2  Inf    1    1     1     2     3     0
+## [14,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf  Inf   Inf   Inf   Inf   Inf
+## [15,]    3    3    2    2    4    3  Inf    1    2     2     1     2     1
 ##       [,14] [,15]
-##  [1,]     3     2
-##  [2,]     2     1
-##  [3,]     1     2
-##  [4,]     4     3
-##  [5,]     1     1
-##  [6,]     2     1
-##  [7,]     2     2
-##  [8,]     3     1
-##  [9,]     3     4
-## [10,]   Inf   Inf
-## [11,]     2     1
-## [12,]     2     3
-## [13,]     3     1
-## [14,]     0     2
-## [15,]     2     0
+##  [1,]   Inf     3
+##  [2,]   Inf     3
+##  [3,]   Inf     2
+##  [4,]   Inf     2
+##  [5,]   Inf     4
+##  [6,]   Inf     3
+##  [7,]   Inf   Inf
+##  [8,]   Inf     1
+##  [9,]   Inf     2
+## [10,]   Inf     2
+## [11,]   Inf     1
+## [12,]   Inf     2
+## [13,]   Inf     1
+## [14,]     0   Inf
+## [15,]   Inf     0
 ```
 ]
 
@@ -851,9 +851,9 @@ eigen_centrality(g)$vector
 ```
 
 ```
-##  [1] 2.827432e-01 3.320475e-01 1.000000e+00 6.173273e-02 4.298678e-01
-##  [6] 7.456289e-01 5.893701e-01 1.137125e-01 7.955809e-02 2.244133e-19
-## [11] 4.876354e-01 3.643854e-01 2.765094e-01 5.305252e-01 5.208166e-01
+##  [1] 1.717532e-01 3.250776e-01 5.927926e-01 7.701867e-01 1.732504e-01
+##  [6] 3.453039e-01 2.894445e-17 6.379023e-01 5.256319e-01 6.846394e-01
+## [11] 4.418533e-01 3.040604e-01 1.000000e+00 2.894445e-17 7.726079e-01
 ```
 
 ---
@@ -988,6 +988,1710 @@ Québec Science est un journal destiné à un grand public, alors je vous invite
 - Qualité de la langue
 
 ---
+---
+title: BIO500
+author: "Dominique Gravel"
+date: "Hiver 2020"
+output:
+  xaringan::moon_reader:
+    css: [default, ../assets/bio500.css, "hygge"]
+    lib_dir: assets
+    seal: false
+    nature:
+      highlightStyle: monokai
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "../assets/macros.js"
+---
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('../assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 5
+
+&lt;hr width="65%" align="left" size="0.3" color="orange"&gt;&lt;/hr&gt;
+
+## La visualisation des données
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;" alt="@Martin Sanchez"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO500** - Dominique Gravel
+]
+
+&lt;img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+---
+
+# Séance 5
+
+- Ces diapositives sont disponibles en [version web](https://econumuds.github.io/BIO500/bloc3/).
+- L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+
+- Vous trouverez du matériel supplémentaire dans le [cours](http://kevincazelles.fr/talks/assets/QCBSGraphsR/Rgraphics.html#4) de [Kevin Cazelles](http://kevincazelles.fr/) et [Nicolas Casajus](http://www.cen.ulaval.ca/membre.aspx?id=3945098&amp;membre=ncasajus) lors d'un atelier de communication visuelle du CSBQ.
+- Certaines diapositives sont également extraites de la présentation de [David Taylor](http://dtdata.io/prm/intro_dataviz_csbq.pdf)
+
+
+---
+class: inverse, center, middle
+
+# Qu'est-ce qui fait une bonne figure ?
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Trop d'information
+
+.center[
+  &lt;img src="assets/img/Pacala.png" width="90%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Non respect des normes graphiques
+
+.center[
+  &lt;img src="assets/img/Desjardins.png" width="80%"&gt;&lt;/img&gt;
+]
+
+---
+# Abus de symboles et de couleurs
+
+&lt;br&gt;&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Boulangeat.png" width="100%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# L'art graphique
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# L'importance des graphiques
+
+&lt;!-- La représentation visuelle de nos données est un **outil de persuasion** permettant d'illustrer nos résultats auprès du public et de nos pairs. Cet outil permet également de mieux comprendre les relations à l'intérieur de nos données par la visualisation. --&gt;
+
+## La représentation visuelle des données permet de:
+
+- Synthétiser l'information.
+- Communiquer plus efficacement qu'un tableau.
+- Explorer nos données par la visualisation.
+- Présenter nos résultats et convaincre.
+
+---
+
+# Explorer nos données par la visualisation
+
+## Voici un exemple illustrant l'importance de visualiser ses données:
+
+.center[
+  &lt;img src="assets/img/table_visu.png" width="100%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Explorer nos données par la visualisation
+
+## Voici un exemple illustrant l'importance de visualiser ses données:
+
+.center[
+  &lt;img src="assets/img/plot_visu.png" height="450px"&gt;&lt;/img&gt;
+]
+
+---
+
+# Communiquer par les graphiques
+
+.pull-left[
+
+- Les graphiques sont généralement **plus efficaces à communiquer** un message/un résultat qu'un tableau.
+
+- **Problème:** La représentation graphique peut parfois nous conduire à une **fausse interprétation**. L'idée est de transmettre une idée sans biaiser le lecteur.
+]
+
+---
+
+# Communiquer par les graphiques
+
+.center[
+  &lt;img src="assets/img/deformation.png" width="100%"&gt;&lt;/img&gt;
+]
+
+
+&lt;!-- - Problème: ratio 8/3 --&gt;
+
+
+---
+
+# Communiquer par les graphiques
+
+&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Weisgerber_1.png" width="80%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Communiquer par les graphiques
+
+&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Weisgerber2.png" width="80%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# Règles et composantes graphiques
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Les composantes graphiques
+
+.pull-left[
+
+- Les axes et échelles.
+- Le titre de la figure.
+- La légende
+- Le [type de représentation des données](http://www.datavizcatalogue.com/).
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/viz.png" width="100%"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Les règles graphiques
+
+.pull-left[
+
+- Une figure doit renvoyer un seul message/résultat.
+- Chaque élément d'une figure doit **aider à comprendre** ce message.
+- **Choisir le bon type de représentation** permet de mettre en valeur plus facilement ce qui doit être illustré.
+- **Attention aux normes graphiques**: Choix des couleurs, taille des caractères, épaisseur de la ligne, disposition des marges, cadrage etc.
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/viz.png" width="100%"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Quelques conseils
+
+- Ne pas **JAMAIS** utiliser de diagramme en pointe de tarte
+
+.center[
+  &lt;img src="assets/img/pies_vs_bars.png" width="100%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Quelques conseils
+
+.pull-left[
+
+- Éviter les figures 3D.
+- Limiter le nombre de dimensions (3 ou 4 dimensions max).
+- La multi-dimensionnalité peut être gérée en:
+  - Modifiant la forme et la la taille des points
+  - Ajoutant des couleurs
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/Pacala.png" height="350px"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Quelques conseils
+
+- Limiter le ratio encre/données afin de faciliter la lecture.
+
+.center[
+  &lt;img src="assets/img/data2ink.jpg" width="100%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# Types de figures
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Diagramme de dispersion (Scatter plot)
+
+&lt;img src="index_files/figure-html/unnamed-chunk-57-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Diagrammes à bâtons (Bar plot)
+
+&lt;img src="index_files/figure-html/unnamed-chunk-58-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Histogrammes
+
+&lt;img src="index_files/figure-html/unnamed-chunk-59-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Représentation 3-D
+
+&lt;img src="index_files/figure-html/unnamed-chunk-60-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Lignes de contour
+
+&lt;img src="index_files/figure-html/unnamed-chunk-61-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, center, middle
+
+# Faire une figure étape par étape avec R
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Préparer les données adéquatement
+
+- Habituellement un `data.frame` ou `une matrice`
+- Une observation par ligne (format long)
+
+---
+
+# Ouvrir une fenêtre graphique
+
+
+```r
+dev.new(width = 10, height = 7)
+```
+
+---
+
+# Fixer certains paramètres
+
+
+```r
+# Fixer la largeur et la hauteur des marges
+par(mar = c(5,6,2,1))
+
+# Fixer le nombre de figures en colonnes et rangées
+par(mfrow = c(1,1))
+```
+
+---
+
+# Démarrer une figure avec `plot()`
+
+.font90[
+
+```r
+arbres &lt;- read.csv2("assets/data/arbres.csv")
+densite &lt;- table(arbres[,c(3,5)])
+elevation &lt;- as.numeric(row.names(densite))
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-64-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Échelles logarithmiques
+
+
+```r
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité",
+      log = "xy")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-65-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajuster les tailles de caractères
+
+## Arguments `cex`, `cex.lab` et `cex.axis`
+
+
+```r
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité",
+      cex.lab = 1.5, cex.axis = 1.25, cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-66-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Modifier les axes
+
+.font90[
+
+```r
+axis(1, seq(0,1000,100))
+axis(2)
+```
+&lt;img src="index_files/figure-html/unnamed-chunk-68-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Ajouter un titre
+
+
+```r
+title(main = "Densité au long du gradient d'élévation")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-70-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Superposer des points d'autre données
+
+
+```r
+points(elevation, densite[,3], pch = 19, cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-72-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Superposer des lignes
+
+
+```r
+lines(elevation, densite[,1],lty = 1, lwd = 1.5)
+lines(elevation, densite[,3], lty  = 3, lwd = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-74-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajouter une ligne de tendance
+
+
+```r
+model = lm(densite[,3]~elevation)
+summary(model)
+abline(model, col = "darkred")
+```
+
+
+```
+## 
+## Call:
+## lm(formula = densite[, 3] ~ elevation)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -59.796 -26.743  -3.565  24.050  92.175 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 148.10588   11.23433  13.183   &lt;2e-16 ***
+## elevation    -0.16650    0.01976  -8.428    5e-11 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 40.32 on 48 degrees of freedom
+## Multiple R-squared:  0.5968,	Adjusted R-squared:  0.5884 
+## F-statistic: 71.04 on 1 and 48 DF,  p-value: 4.999e-11
+```
+
+---
+
+# Ajouter une ligne de tendance
+
+
+```r
+model = lm(densite[,3]~elevation)
+abline(model, col = "darkred")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-78-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Ajouter une légende
+
+
+```r
+legend("top", bty = "n", pch = c(19,1), lty = 1,
+    legend = c("Érable à sucre", "Sapin baumier"),
+    cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-80-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajouter du texte
+
+
+```r
+r2 &lt;- round(summary(model)$r.squared, 2)
+text(x = 850, y = 25, paste("R2=",r2),
+    cex = 21.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-82-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Pour plus d'information
+
+- `?plot`
+- `?par`
+- `?axis`
+- `?mtext`
+
+---
+class: inverse, center, middle
+
+# Créer d'autres types de figure
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Diagramme de dispersion (Scatter plot)
+
+.font80[
+
+```r
+arbres  &lt;- read.csv2("assets/data/arbres.csv")
+densite &lt;- table(arbres[,c(3,5)])
+elevation &lt;- as.numeric(row.names(densite))
+plot(elevation, densite[,1], pch = 19,
+  xlab = "Elevation", ylab = "Densité")
+points(elevation, densite[,3])
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-84-1.png" width="52%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Diagrammes à bâtons (Bar plot)
+
+
+```r
+arbres  &lt;- read.csv2("assets/data/arbres.csv")
+n_tot &lt;- table(arbres$esp)
+barplot(n_tot)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-86-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Histogrammes
+
+
+```r
+hist(densite[,3])
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-88-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Représentation 3-D
+
+.font70[
+
+```r
+x &lt;- 10*(1:nrow(volcano))
+y &lt;- 10*(1:ncol(volcano))
+
+image(x, y, volcano,
+  col = terrain.colors(100), axes = FALSE)
+
+axis(1, at = seq(100, 800, by = 100))
+axis(2, at = seq(100, 600, by = 100))
+box()
+
+title(main = "Maunga Whau Volcano", font.main = 4)
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-90-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Lignes de contour
+
+.font70[
+
+```r
+x &lt;- 10*(1:nrow(volcano))
+y &lt;- 10*(1:ncol(volcano))
+
+image(x, y, volcano,
+  col = terrain.colors(100), axes = FALSE)
+
+axis(1, at = seq(100, 800, by = 100))
+axis(2, at = seq(100, 600, by = 100))
+box()
+
+title(main = "Maunga Whau Volcano", font.main = 4)
+
+contour(x, y, volcano,
+  levels = seq(90, 200, by = 5),
+  add = TRUE, col = "black")
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-92-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Enregistrer une figure
+
+
+
+```r
+dev.copy2pdf(file = "test.pdf")
+dev.copy2png(file = "test.png")
+dev.copy2eps(file = "test.eps")
+```
+
+---
+
+# Exercice
+
+&lt;br&gt;
+## faire une représentation visuelle de la distribution de degrés
+
+---
+class: inverse, center, middle
+
+# La visualisation de réseau avec igraph
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Installation
+
+
+```r
+install.packages("igraph")
+library(igraph)
+```
+
+---
+
+# Transformer une matrice d'adjacence en objet `igraph`
+
+
+```r
+library(igraph)
+C &lt;- 0.1
+S &lt;- 15
+L &lt;- matrix(0, nr = S, nc = S)
+L[runif(S*S) &lt; C] = 1
+sum(L)
+```
+
+```
+## [1] 19
+```
+
+```r
+g &lt;- graph.adjacency(L)
+```
+
+---
+
+# Utiliser la fonction `plot`
+
+
+```r
+plot(g)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-96-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Utiliser la fonction `plot`
+
+Version plus esthétique sans les paramètres par défaut
+
+.font90[
+
+```r
+plot(g, vertex.label = NA, edge.arrow.mode = 0,
+     vertex.frame.color = NA)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-97-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Exercice
+
+&lt;br&gt;
+## Compiler la matrice d'adjacence et faire une première représentation du réseau avec `igraph`
+
+---
+
+# Changer la couleur des noeuds
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-98-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.font80[
+
+```r
+# Calculer le degré
+deg &lt;- apply(L, 2, sum) + apply(L, 1, sum)
+
+# Le rang pour chaque noeud
+rk &lt;- rank(deg)
+
+# Faire un code de couleur
+col.vec &lt;- heat.colors(S)
+
+# Attribuer aux noeuds la couleur
+V(g)$color = col.vec[rk]
+
+# Refaire la figure
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA)
+```
+]]
+
+---
+
+# Changer la taille des noeuds
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-100-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.font80[
+
+```r
+# Faire un code de ctaille
+col.vec &lt;- seq(10, 25, length.out = S)
+
+# Attribuer aux noeuds la couleur
+V(g)$size = col.vec[rk]
+
+# Refaire la figure
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA)
+```
+]]
+
+---
+
+# Changer la disposition des noeuds
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-102-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.font80[
+
+```r
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA,
+    layout = layout.circle(g))
+```
+]]
+
+---
+
+# Changer la disposition des noeuds
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-104-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.font80[
+
+```r
+plot(g, vertex.label=NA, edge.arrow.mode = 0,
+    vertex.frame.color = NA,
+    layout = layout.kamada.kawai(g))
+```
+]]
+
+---
+
+# Calcul de propriétés
+
+## La modularité
+
+
+```r
+wtc = walktrap.community(g)
+modularity(wtc)
+```
+
+```
+## [1] 0.4252078
+```
+
+---
+
+# Calcul de propriétés
+
+## La distance entre les noeuds
+
+.font90[
+
+```r
+distances(g)
+```
+
+```
+##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
+##  [1,]    0    2    2    3    4    4    3  Inf    2     2     3     3     1
+##  [2,]    2    0    2    1    4    2    3  Inf    2     2     3     3     1
+##  [3,]    2    2    0    3    2    4    2  Inf    2     1     3     1     1
+##  [4,]    3    1    3    0    5    2    2  Inf    1     3     2     4     2
+##  [5,]    4    4    2    5    0    6    4  Inf    4     3     5     1     3
+##  [6,]    4    2    4    2    6    0    4  Inf    3     4     4     5     3
+##  [7,]    3    3    2    2    4    4    0  Inf    1     1     2     3     2
+##  [8,]  Inf  Inf  Inf  Inf  Inf  Inf  Inf    0  Inf   Inf   Inf   Inf   Inf
+##  [9,]    2    2    2    1    4    3    1  Inf    0     2     1     3     1
+## [10,]    2    2    1    3    3    4    1  Inf    2     0     3     2     1
+## [11,]    3    3    3    2    5    4    2  Inf    1     3     0     4     2
+## [12,]    3    3    1    4    1    5    3  Inf    3     2     4     0     2
+## [13,]    1    1    1    2    3    3    2  Inf    1     1     2     2     0
+## [14,]    3    1    3    1    5    1    3  Inf    2     3     3     4     2
+## [15,]    4    4    3    3    5    5    1  Inf    2     2     1     4     3
+##       [,14] [,15]
+##  [1,]     3     4
+##  [2,]     1     4
+##  [3,]     3     3
+##  [4,]     1     3
+##  [5,]     5     5
+##  [6,]     1     5
+##  [7,]     3     1
+##  [8,]   Inf   Inf
+##  [9,]     2     2
+## [10,]     3     2
+## [11,]     3     1
+## [12,]     4     4
+## [13,]     2     3
+## [14,]     0     4
+## [15,]     4     0
+```
+]
+
+---
+
+# Calcul de propriétés
+
+## La centralité des noeuds
+
+
+```r
+eigen_centrality(g)$vector
+```
+
+```
+##  [1] 0.29292717 0.78451849 0.54068828 1.00000000 0.05607166 0.18506211
+##  [7] 0.54380023 0.00000000 0.87407928 0.62535458 0.35211078 0.18292436
+## [13] 0.95562561 0.60373400 0.27462290
+```
+
+---
+class: inverse, center, middle
+
+# Exporter des tableaux
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Exporter des tableaux
+
+Exporter des tableaux depuis R vers son document de travail peut être difficile.
+
+## La procédure habituelle serait:
+
+1. Enregistrer le `data.frame` dans un fichier avec la fonction `write.table()` ou `write.csv()`
+2. Éditer et faire la mise en page dans MS Excel ou MS Word.
+
+Le package `knitr` permet de faciliter cette procédure en exportant le `data.frame` directement dans son document de travail LaTeX.
+
+---
+
+# Exporter des tableaux
+
+Prenons le jeu de données `iris` directement disponible sous R.
+
+
+```r
+data(iris)
+class(iris)
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+head(iris)
+```
+
+```
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+```
+
+---
+
+# Exporter des tableaux
+
+Je souhaite maintenant exporter ce `data.frame` en LateX (un format que nous verrons lors de la prochaine séance):
+
+
+```r
+library(knitr)
+iris_tex &lt;- kable(iris,format="latex")
+writeLines(iris_tex, con = "./assets/data/iris.tex", sep = "\n", useBytes = FALSE)
+```
+
+---
+class: inverse, center, middle
+
+# Travail de la semaine
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Consignes
+
+- Identifier clairement vos questions de recherche
+- Illustrer le réseau de collaborations
+- Compléter votre analyse au moyen de 3 figures et 1 tableau
+- Mettre à jour le makefile
+
+---
+
+# Évaluation
+
+- Clareté des questions et adéquation des figures et du tableau
+- Efficacité de la présentation
+- Respect de normes graphiques
+- Originalité
+
+---
+
+# Objectifs
+
+L'objectif d'un essai est de présenter une perspective sur un enjeu scientifique, appuyé par une argumentation logique et une lecture critique de la littérature. L'objectif spécifique de ce travail est de formuler et défendre une opinion sur les enjeux de reproductibilité en écologie.
+
+---
+
+# Mise en situation
+
+Vous êtes invités à préparer un article pour le journal Québec Science, où on vous a demandé de rédiger l'éditorial du mois sur cet enjeu.  Vous devez défendre par quels moyens vous pourriez améliorer la reproductibilité de la science si vous étiez en charge d'un laboratoire dans une institution universitaire. Vous êtes invités à faire une lecture critique de la situation actuelle et à proposer des mesures qui permettront de répondre aux enjeux identifiés.
+
+---
+
+# Attentes
+
+Québec Science est un journal destiné à un grand public, alors je vous invite à personnaliser votre argumentation et à rendre original sa présentation. Vous pouvez utiliser des tableaux, des figures ou encore des encadrés pour étayer vos propos. Essayez de faire plus que de rapporter les arguments présentés en classe, n'hésitez pas à personnaliser votre essai.
+
+---
+
+# Consignes
+
+- Le texte doit faire au maximum 1500 mots et doit être accompagné d'un résumé court, provocateur de 100 mots. Le document peut être supporté par une figure et/ou un tableau.
+- Le texte peut être structuré en sections afin de permettre au lecteur de suivre le développement de l'argumentaire.
+- La section finale doit résumer les points principaux.
+- Utiliser LaTeX pour la mise en forme du document.
+- L'argumentaire doit être supporté de littérature scientifique appropriée. Vous pouvez certes utiliser les articles discutés en classe, mais essayez d'aller puis au-delà de ces références pour alimenter vos arguments.
+
+---
+
+# Évaluation
+
+- Respect des consignes
+- Titre et résumé
+- Formulation de la proposition
+- Qualité de l'argumentation
+    + Identification des problèmes
+    + Proposition de solutions
+- Originalité
+- Mise en page
+- Bibliographie
+- Qualité de la langue
+
+---
+---
+title: BIO500
+author: "Dominique Gravel"
+date: "Hiver 2020"
+output:
+  xaringan::moon_reader:
+    css: [default, ../assets/bio500.css, "hygge"]
+    lib_dir: assets
+    seal: false
+    nature:
+      highlightStyle: monokai
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "../assets/macros.js"
+---
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('../assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 5
+
+&lt;hr width="65%" align="left" size="0.3" color="orange"&gt;&lt;/hr&gt;
+
+## La visualisation des données
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;" alt="@Martin Sanchez"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO500** - Dominique Gravel
+]
+
+&lt;img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+---
+
+# Séance 5
+
+- Ces diapositives sont disponibles en [version web](https://econumuds.github.io/BIO500/bloc3/).
+- L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+
+- Vous trouverez du matériel supplémentaire dans le [cours](http://kevincazelles.fr/talks/assets/QCBSGraphsR/Rgraphics.html#4) de [Kevin Cazelles](http://kevincazelles.fr/) et [Nicolas Casajus](http://www.cen.ulaval.ca/membre.aspx?id=3945098&amp;membre=ncasajus) lors d'un atelier de communication visuelle du CSBQ.
+- Certaines diapositives sont également extraites de la présentation de [David Taylor](http://dtdata.io/prm/intro_dataviz_csbq.pdf)
+
+
+---
+class: inverse, center, middle
+
+# Qu'est-ce qui fait une bonne figure ?
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Trop d'information
+
+.center[
+  &lt;img src="assets/img/Pacala.png" width="90%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Non respect des normes graphiques
+
+.center[
+  &lt;img src="assets/img/Desjardins.png" width="80%"&gt;&lt;/img&gt;
+]
+
+---
+# Abus de symboles et de couleurs
+
+&lt;br&gt;&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Boulangeat.png" width="100%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# L'art graphique
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# L'importance des graphiques
+
+&lt;!-- La représentation visuelle de nos données est un **outil de persuasion** permettant d'illustrer nos résultats auprès du public et de nos pairs. Cet outil permet également de mieux comprendre les relations à l'intérieur de nos données par la visualisation. --&gt;
+
+## La représentation visuelle des données permet de:
+
+- Synthétiser l'information.
+- Communiquer plus efficacement qu'un tableau.
+- Explorer nos données par la visualisation.
+- Présenter nos résultats et convaincre.
+
+---
+
+# Explorer nos données par la visualisation
+
+## Voici un exemple illustrant l'importance de visualiser ses données:
+
+.center[
+  &lt;img src="assets/img/table_visu.png" width="100%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Explorer nos données par la visualisation
+
+## Voici un exemple illustrant l'importance de visualiser ses données:
+
+.center[
+  &lt;img src="assets/img/plot_visu.png" height="450px"&gt;&lt;/img&gt;
+]
+
+---
+
+# Communiquer par les graphiques
+
+.pull-left[
+
+- Les graphiques sont généralement **plus efficaces à communiquer** un message/un résultat qu'un tableau.
+
+- **Problème:** La représentation graphique peut parfois nous conduire à une **fausse interprétation**. L'idée est de transmettre une idée sans biaiser le lecteur.
+]
+
+---
+
+# Communiquer par les graphiques
+
+.center[
+  &lt;img src="assets/img/deformation.png" width="100%"&gt;&lt;/img&gt;
+]
+
+
+&lt;!-- - Problème: ratio 8/3 --&gt;
+
+
+---
+
+# Communiquer par les graphiques
+
+&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Weisgerber_1.png" width="80%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Communiquer par les graphiques
+
+&lt;br&gt;
+.center[
+  &lt;img src="assets/img/Weisgerber2.png" width="80%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# Règles et composantes graphiques
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Les composantes graphiques
+
+.pull-left[
+
+- Les axes et échelles.
+- Le titre de la figure.
+- La légende
+- Le [type de représentation des données](http://www.datavizcatalogue.com/).
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/viz.png" width="100%"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Les règles graphiques
+
+.pull-left[
+
+- Une figure doit renvoyer un seul message/résultat.
+- Chaque élément d'une figure doit **aider à comprendre** ce message.
+- **Choisir le bon type de représentation** permet de mettre en valeur plus facilement ce qui doit être illustré.
+- **Attention aux normes graphiques**: Choix des couleurs, taille des caractères, épaisseur de la ligne, disposition des marges, cadrage etc.
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/viz.png" width="100%"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Quelques conseils
+
+- Ne pas **JAMAIS** utiliser de diagramme en pointe de tarte
+
+.center[
+  &lt;img src="assets/img/pies_vs_bars.png" width="100%"&gt;&lt;/img&gt;
+]
+
+---
+
+# Quelques conseils
+
+.pull-left[
+
+- Éviter les figures 3D.
+- Limiter le nombre de dimensions (3 ou 4 dimensions max).
+- La multi-dimensionnalité peut être gérée en:
+  - Modifiant la forme et la la taille des points
+  - Ajoutant des couleurs
+]
+
+.pull-right[
+  .center[
+    &lt;img src="assets/img/Pacala.png" height="350px"&gt;&lt;/img&gt;
+  ]
+]
+
+---
+
+# Quelques conseils
+
+- Limiter le ratio encre/données afin de faciliter la lecture.
+
+.center[
+  &lt;img src="assets/img/data2ink.jpg" width="100%"&gt;&lt;/img&gt;
+]
+
+
+---
+class: inverse, center, middle
+
+# Types de figures
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Diagramme de dispersion (Scatter plot)
+
+&lt;img src="index_files/figure-html/unnamed-chunk-112-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Diagrammes à bâtons (Bar plot)
+
+&lt;img src="index_files/figure-html/unnamed-chunk-113-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Histogrammes
+
+&lt;img src="index_files/figure-html/unnamed-chunk-114-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Représentation 3-D
+
+&lt;img src="index_files/figure-html/unnamed-chunk-115-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Lignes de contour
+
+&lt;img src="index_files/figure-html/unnamed-chunk-116-1.png" height="550px" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, center, middle
+
+# Faire une figure étape par étape avec R
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Préparer les données adéquatement
+
+- Habituellement un `data.frame` ou `une matrice`
+- Une observation par ligne (format long)
+
+---
+
+# Ouvrir une fenêtre graphique
+
+
+```r
+dev.new(width = 10, height = 7)
+```
+
+---
+
+# Fixer certains paramètres
+
+
+```r
+# Fixer la largeur et la hauteur des marges
+par(mar = c(5,6,2,1))
+
+# Fixer le nombre de figures en colonnes et rangées
+par(mfrow = c(1,1))
+```
+
+---
+
+# Démarrer une figure avec `plot()`
+
+.font90[
+
+```r
+arbres &lt;- read.csv2("assets/data/arbres.csv")
+densite &lt;- table(arbres[,c(3,5)])
+elevation &lt;- as.numeric(row.names(densite))
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-119-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Échelles logarithmiques
+
+
+```r
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité",
+      log = "xy")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-120-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajuster les tailles de caractères
+
+## Arguments `cex`, `cex.lab` et `cex.axis`
+
+
+```r
+plot(elevation, densite[,1], axes = FALSE,
+      xlab = "Élévation", ylab = "Densité",
+      cex.lab = 1.5, cex.axis = 1.25, cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-121-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Modifier les axes
+
+.font90[
+
+```r
+axis(1, seq(0,1000,100))
+axis(2)
+```
+&lt;img src="index_files/figure-html/unnamed-chunk-123-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Ajouter un titre
+
+
+```r
+title(main = "Densité au long du gradient d'élévation")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-125-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Superposer des points d'autre données
+
+
+```r
+points(elevation, densite[,3], pch = 19, cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-127-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Superposer des lignes
+
+
+```r
+lines(elevation, densite[,1],lty = 1, lwd = 1.5)
+lines(elevation, densite[,3], lty  = 3, lwd = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-129-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajouter une ligne de tendance
+
+
+```r
+model = lm(densite[,3]~elevation)
+summary(model)
+abline(model, col = "darkred")
+```
+
+
+```
+## 
+## Call:
+## lm(formula = densite[, 3] ~ elevation)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -59.796 -26.743  -3.565  24.050  92.175 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 148.10588   11.23433  13.183   &lt;2e-16 ***
+## elevation    -0.16650    0.01976  -8.428    5e-11 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 40.32 on 48 degrees of freedom
+## Multiple R-squared:  0.5968,	Adjusted R-squared:  0.5884 
+## F-statistic: 71.04 on 1 and 48 DF,  p-value: 4.999e-11
+```
+
+---
+
+# Ajouter une ligne de tendance
+
+
+```r
+model = lm(densite[,3]~elevation)
+abline(model, col = "darkred")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-133-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Ajouter une légende
+
+
+```r
+legend("top", bty = "n", pch = c(19,1), lty = 1,
+    legend = c("Érable à sucre", "Sapin baumier"),
+    cex = 1.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-135-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Ajouter du texte
+
+
+```r
+r2 &lt;- round(summary(model)$r.squared, 2)
+text(x = 850, y = 25, paste("R2=",r2),
+    cex = 21.5)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-137-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Pour plus d'information
+
+- `?plot`
+- `?par`
+- `?axis`
+- `?mtext`
+
+---
+class: inverse, center, middle
+
+# Créer d'autres types de figure
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Diagramme de dispersion (Scatter plot)
+
+.font80[
+
+```r
+arbres  &lt;- read.csv2("assets/data/arbres.csv")
+densite &lt;- table(arbres[,c(3,5)])
+elevation &lt;- as.numeric(row.names(densite))
+plot(elevation, densite[,1], pch = 19,
+  xlab = "Elevation", ylab = "Densité")
+points(elevation, densite[,3])
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-139-1.png" width="52%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Diagrammes à bâtons (Bar plot)
+
+
+```r
+arbres  &lt;- read.csv2("assets/data/arbres.csv")
+n_tot &lt;- table(arbres$esp)
+barplot(n_tot)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-141-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Histogrammes
+
+
+```r
+hist(densite[,3])
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-143-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Représentation 3-D
+
+.font70[
+
+```r
+x &lt;- 10*(1:nrow(volcano))
+y &lt;- 10*(1:ncol(volcano))
+
+image(x, y, volcano,
+  col = terrain.colors(100), axes = FALSE)
+
+axis(1, at = seq(100, 800, by = 100))
+axis(2, at = seq(100, 600, by = 100))
+box()
+
+title(main = "Maunga Whau Volcano", font.main = 4)
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-145-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Lignes de contour
+
+.font70[
+
+```r
+x &lt;- 10*(1:nrow(volcano))
+y &lt;- 10*(1:ncol(volcano))
+
+image(x, y, volcano,
+  col = terrain.colors(100), axes = FALSE)
+
+axis(1, at = seq(100, 800, by = 100))
+axis(2, at = seq(100, 600, by = 100))
+box()
+
+title(main = "Maunga Whau Volcano", font.main = 4)
+
+contour(x, y, volcano,
+  levels = seq(90, 200, by = 5),
+  add = TRUE, col = "black")
+```
+]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-147-1.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Enregistrer une figure
+
+
+
+```r
+dev.copy2pdf(file = "test.pdf")
+dev.copy2png(file = "test.png")
+dev.copy2eps(file = "test.eps")
+```
+
+---
+
+# Exercice
+
+&lt;br&gt;
+## faire une représentation visuelle de la distribution de degrés
+
+---
+class: inverse, center, middle
+
+# La visualisation de réseau avec igraph
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Installation
+
+
+```r
+install.packages("igraph")
+library(igraph)
+```
+
+---
+
+# Transformer une matrice d'adjacence en objet `igraph`
+
+
+```r
+library(igraph)
+C &lt;- 0.1
+S &lt;- 15
+L &lt;- matrix(0, nr = S, nc = S)
+L[runif(S*S) &lt; C] = 1
+sum(L)
+```
+
+```
+## [1] 30
+```
+
+```r
+g &lt;- graph.adjacency(L)
+```
+
+---
+
+# Utiliser la fonction `plot`
+
+
+```r
+plot(g)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-151-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Utiliser la fonction `plot`
+
+Version plus esthétique sans les paramètres par défaut
+
+.font90[
+
+```r
+plot(g, vertex.label = NA, edge.arrow.mode = 0,
+     vertex.frame.color = NA)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-152-1.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Exercice
+
+&lt;br&gt;
+## Compiler la matrice d'adjacence et faire une première représentation du réseau avec `igraph`
+
+---
+
+# Changer la couleur des noeuds
+
+.pull-left[
+&lt;img src="index_files/figure-html/unnamed-chunk-153-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+.font80[
+
+```r
+# Calculer le degré
+deg &lt;- apply(L, 2, sum) + apply(L, 1, sum)
+
+# Le rang pour chaque noeud
+rk &lt;- rank(deg)
+
+# Faire un code de couleur
+col.vec &lt;- heat.colors(S)
+
+# Attri
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
