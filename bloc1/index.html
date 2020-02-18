@@ -11,6 +11,8 @@
   <body>
     <textarea id="source">
 
+
+
 class: title-slide, middle
 
 &lt;style type="text/css"&gt;
@@ -505,6 +507,9 @@ class: inverse, center, middle
 - Baker, M. 2016. Is there a reproducibility crisis ? Nature, 533 : 452:454
 - Munafo, M.R. et al. 2017. A manifesto for reproducible science. Nature Human Behaviour 1: 0021
 - Open Science Collaboration. 2015. Estimating the reproducibility of psychological science. Science 349 : 943.
+
+
+
 ---
 class: inverse
 
@@ -1330,7 +1335,7 @@ CREATE TABLE auteurs (
 ]
 
 .pull-right[
-- `auteurs` est le nom de la table 
+- `auteurs` est le nom de la table
 - Chaque attribut de la table (`nom`,`prenom` etc) dispose d'un type de données (`varchar(40)`,`DATE`,  etc) [Type de données SQLite](https://www.sqlite.org/datatype3.html)
 - La dernière ligne correspond aux contraintes de la table telle que la clé primaire.
 - **Question:** Cette clé primaire est composite ou simple?
@@ -1347,12 +1352,12 @@ CREATE TABLE auteurs (
 ```sql
 CREATE TABLE collaborations (
     nom1        VARCHAR(40),
-    prenom1     VARCHAR(40),    
+    prenom1     VARCHAR(40),
     nom2        VARCHAR(40),
     prenom2     VARCHAR(40),
-    code        VARCHAR5),  
+    code        VARCHAR5),
     PRIMARY KEY (nom1, prenom1),
-    FOREIGN KEY (code) 
+    FOREIGN KEY (code)
 );
 ```
 ]
@@ -1460,6 +1465,9 @@ dbDisconnect(con)
 
 - Poisot et al. 2014. Moving toward a sustainable ecological science: don't let data go to waste ! Ideas in Ecology and Evolution 6: 11-19
 - Mills et al. 2015. Archivin Primary Data: Solutions for Long-term Studies. Trends in Ecology and Evolution.
+
+
+
 ---
 class: inverse
 
